@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>双向数据绑定</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		<input type="text" ng-model="msg" ng-change="fn();">
+		<!-- 相当于在当前控制器的$scope中绑定了一个属性,为msg -->
+		<br>
+		{{newMsg+10}}
+	</div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+
+	app.controller("ctrl",["$scope",function($scope){
+		$scope.fn = function(){
+			console.log($scope.msg);
+			$scope.newMsg = Number($scope.msg);
+		}
+		
+	}])
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  // 创建一个 IndexDB 数据库 
+  var testDB =  window.indexedDB.open('testDB');
+  /* 除了 result 之外, IDBOpenDBRequest 定义了几个
+  重要的方法
+     onerror, : 失败执行的回调  
+     onsuccess : 成功执行的回调 
+    onupgradeneeded  : 数据库版本变化执行的回调 
+  */
+  var myDB = {
+     name: "myDB_test",
+     version: 1,
+     db: null
+  };
+  // 封装一个 openDB 的方法 
+  function openDB(name){
+    var res = window.indexedDB.open(name);
+    // 注册请求失败的方法 
+    res.onerror = function(e){
+       console.log(e);     
+    };
+    // 注册请求成功的方法
+    res.onsuccess = function(e){
+        // 把成功请求到的 IndexDB对象赋值给 myDB.db 
+        myDB.db = e.target.result;
+    }
+  };
+  openDB(myDB.name); 
+ // ObjectStore 
+ // 预习 IndexDB  创建一个 Object Store, 往这个
+//  对象仓库中添加一组数据  
+</script>
+</body>
+</html>

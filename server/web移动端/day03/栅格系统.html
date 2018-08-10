@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Bootstrap</title>
+  <link href='https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
+  <!--[if lt IE 9]><script src='https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js'></script><script src='https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js'></script><![endif]-->
+  <style>
+    div {
+      border: 1px solid #666;
+    }
+  </style>
+</head>
+
+<body>
+  <div class='container'>
+    <h2>全局样式 - 栅格系统 </h2>
+    <h3>基本结构 容器 > 行 > 12列 > 内容 </h3>
+    <div class='row'>
+      <div class='col-md-1'>md-1</div>
+      <div class='col-md-1'>md-2</div>
+      <div class='col-md-1'>md-3</div>
+      <div class='col-md-1'>md-4</div>
+      <div class='col-md-1'>md-5</div>
+      <div class='col-md-1'>md-6</div>
+      <div class='col-md-1'>md-7</div>
+      <div class='col-md-1'>md-8</div>
+      <div class='col-md-1'>md-9</div>
+      <div class='col-md-1'>md-10</div>
+      <div class='col-md-1'>md-11</div>
+      <div class='col-md-1'>md-12</div>
+      <div class='col-md-1'>md-13</div>
+    </div>
+    <h2> 一行多列布局 </h2>
+    <div class='row'>
+      <div class='col-md-3'>md-1</div>
+      <div class='col-md-3'>md-2</div>
+      <div class='col-md-3'>md-3</div>
+      <div class='col-md-3'>md-4</div>
+    </div>
+    <div class='row'>
+      <div class='col-md-2'>md-1</div>
+      <div class='col-md-8'>md-2</div>
+      <div class='col-md-2'>md-3</div>
+    </div>
+    <h2> 一个列指定不同屏幕下的不同宽度 </h2>
+    <div class='row'>
+      <div class='col-md-8 col-sm-2 col-xs-10'>不同屏幕下的列</div>
+    </div>
+     <h2> 不同屏幕下的列的有效范围 </h2>
+     <div class='row'>
+         <div class=' col-xs-2'> col-sm-2 </div>
+     </div>
+     <h2> 列的隐藏 </h2>
+     <div class='row'>
+         <div  class='col-xs-6 hidden-sm hidden-md'> 列的隐藏 col-xs-6</div> 
+     </div>
+     <h2> 列的偏移 </h2>
+     <div class='row'>
+          <div class='col-xs-2 col-xs-offset-5'>列的偏移 col-xs-2 </div>
+     </div>
+     <div class='row'>
+        <div class='col-xs-2 col-xs-offset-2'>列的偏移 col-xs-2 </div>
+        <div class='col-xs-2 '>列的偏移 col-xs-2 </div>
+   </div>
+   <div class='row'>
+      <div class='col-xs-2 col-xs-offset-5 col-sm-4 col-sm-offset-4'>列的偏移 col-xs-2 </div>
+ </div>
+  </div>
+
+
+
+
+   <br><br>
+   <br><br>
+   <br><br>
+   <br><br>
+   <br><br>
+</body>
+<script src='https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js'></script>
+<script src='https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+</html>

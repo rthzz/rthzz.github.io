@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// 栈和队列 
+  //1.末尾出入栈
+  var arr1 = ['red','blue'];
+  // 在数组的末尾入栈 yellow 
+  arr1.push('yellow');
+  arr1.push('black');
+  console.log(arr1);
+  // 出栈 
+  arr1.pop(); // 每调用一次,出栈最后一个元素 
+  arr1.pop();
+  console.log(arr1);
+
+  // 2. 开头出入栈 
+  // 开头入栈  unshift()
+  arr1.unshift('#ddd');
+  arr1.unshift('#fff');
+  console.log(arr1); 
+  // 开头出栈  shift(); 
+  arr1.shift();
+  arr1.shift(); 
+  console.log(arr1); 
+
+
+  // 例子 - 栈和队列
+  // 依次从数组的末尾进入5个乘客,在从数组开头出去
+  var bus = []; 
+  for(var i=1;i<=5;i++){
+  	// 往数组中 压入5个乘客 
+  	bus.push('乘客'+i);
+  };
+  for(var i=0,len = bus.length;i<len;i++){
+     var first = bus.shift();
+     console.log(first + '下车');
+  }
+
+  // 例子2 - 练习
+  // 依次从数组开头进入5个乘客, 乘客依次从
+  // 末尾下车
+</script>
+</body>
+</html>

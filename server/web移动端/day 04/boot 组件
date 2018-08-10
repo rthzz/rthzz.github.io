@@ -1,0 +1,51 @@
+
+组件
+  1 图标字体:glyphicons 是由boot免费提供使用,250+个.
+  字体图标不是图片,是字体
+  2 字体图标必须要用于空元素(不包含子元素和内容)
+     <span class=' glyphicon glyphicon-*'></span>
+
+     下拉菜单
+        结构:
+        <div class='dropdown'>父元素 相对定位
+        <a type='button'>触发下拉按钮 </a>
+        <ul class='dropdown-menu'> 绝对定位
+      内容
+        </ul>
+        </div>
+
+
+    响应式导航条
+      实现规则是:在pc和平板上是默认显示所有内容 
+      在手机上导航条默认显示logo以及一个菜单折叠展开按钮
+      只有点击菜单按钮 才可以显示或隐藏所有菜单内容
+
+      基础样式 .navbar 
+       导航条的背景色:白底  深色底
+       导航条的定位:相对定位  固定定位
+
+插件 
+boot基于jquery提供了十几个插件
+每个插件都有单独的文件
+可以单独的引用可以整体的引用
+插件的使用
+        传统的js调用:$('elem').dropdown()
+        data-*扩展属性方式调用:
+        <button ></button>
+
+
+bootlint.js 工具
+  这是一个boot检测工具 用于检测页面中常见的html错误
+
+
+
+  boot的定制 
+     less插件的安装-vscode esayless插件
+     less是css的预处理语言 扩展了css 增加了变量 混合 (mixin),函数等功能.让css更易维护
+     扩展
+     less的运行环境: node/浏览器
+
+
+
+
+    

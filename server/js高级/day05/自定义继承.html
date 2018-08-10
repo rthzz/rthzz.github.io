@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 自定义继承  
+    // 1. child.__proto__  = father;
+    function Person(sname) {
+      this.sname = sname;
+      Person.prototype.sage = 20;
+    };
+    var p1 = new Person('小明');
+    var obj = {
+      sage: 22,
+      intrSelf: function(){
+        console.log(this.sname+ this.sage);
+      }
+    };
+    p1.__proto__ = obj;
+
+ // 构造函数.prototype = father;  推荐使用 
+   function Student(sname,sage,gf){
+       this.sname = sname;
+       this.sage = sage;
+       this.gf = gf; 
+   };
+   // 创建一个父对象 
+  var father = {
+     money: 100000000,
+     car: '法拉利'
+  };
+  Student.prototype = father; 
+  
+  // 创建子对象 
+  var  xm = new Student('小明',22,1);
+  
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

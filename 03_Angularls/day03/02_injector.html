@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>依赖注入</title>
+</head>
+<body ng-app="app">
+	外面:{{age}}
+	<div ng-controller="c1">
+		控制器:{{age}},{{num}}
+	</div>
+	外面:{{num}},{{sex}}
+	<div ng-controller="c2">
+		{{name}},{{sex}}
+	</div>
+	<div ng-controller="c3">
+		{{className}},{{grade}}
+	</div>
+	外面:{{className}},{{grade}}
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+	// 1、行内注入
+	// 先将依赖的对象全部写在数组中
+	// 然后再到function中通过参数去调用
+	app.controller("c1",["$scope","$rootScope",function($scope,$rootScope){
+		$scope.age = 23;
+		$rootScope.num = 100;
+	}]);
+	// 2、推断式注入
+	app.controller("c2",function($rootScope,$scope){
+			$scope.name = "张三";
+			$rootScope.sex = "男";
+	})
+	// 3、inject注入
+	var fn = function(a,b){//定义function
+		a.className = "三年级";
+		b.grade = "四年级";
+	}
+	//给function注入依赖
+	fn.$inject = ["$rootScope","$scope"];
+	//创建控制器,将注入依赖对象的function传递给控制器
+	app.controller("c3",fn);
+</script>
+</html>

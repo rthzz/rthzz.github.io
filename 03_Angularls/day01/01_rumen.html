@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJs入门</title>
+</head>
+<body ng-app>
+	<!-- 在文本框中输入数据,在文本框的下方显示你输入的数据 -->
+	<!-- <input type="text" id="input" onchange="fn();" value=""> -->
+	<input type="text" ng-model="msg">
+	<div>你输入的是:{{msg}}</div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+// function fn(){
+// 	var input = document.getElementById("input").value;
+// 	var div = document.getElementById("div");
+// 	div.innerHTML = input;
+// }
+</script>
+</html>

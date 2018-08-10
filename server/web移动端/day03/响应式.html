@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      .left, .center, .right{
+          float:left;
+      }
+      .left{ background: #fdd; }
+      .center{ background: #dfd; }
+      .right{ background: #ddf; }
+      @media screen and (min-width:900px){
+           .left { width:20% }
+           .center{ width: 60%; }
+           .right{ width:20%; }
+      }
+      @media screen and (max-width:899px) and (min-width:720px) {
+           .left { width:30% }
+           .center{ width:70%; }
+           .right{ display: none ;}
+      }
+      @media screen and (max-width:719px){
+           .left { width:100% }
+           .center{ width:100%; }
+           .right{ width:100%; }
+      }
+  </style>
+</head>
+<body>
+    <h2>响应式布局练习</h2>
+   <div class='box'>
+       <div class='left'>页面的左侧部分
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas similique optio illum, fuga quasi consequatur sapiente. Non dolorum magnam dicta exercitationem doloremque possimus minima fuga assumenda accusantium. Dolorum, ratione quidem.Est veniam dolore nihil ex unde distinctio provident ipsum, consequatur totam id debitis in error blanditiis qui quos quo explicabo reprehenderit excepturi eligendi voluptas. Architecto autem illum placeat culpa tempore.
+       </div>
+       <div class='center'>页面的中间部分
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio similique sequi dolor. Eveniet odio obcaecati odit ad maxime, corporis dolore laudantium excepturi voluptatibus quam harum inventore repellat minima totam molestiae.
+            Labore repellendus vitae eius ipsam facilis fugiat minima at, voluptas odit repellat fugit dignissimos quas ex quo eligendi maiores doloremque illo, pariatur consequuntur fuga dolorem? Sunt dolores omnis modi veritatis.
+            Quidem reprehenderit reiciendis porro vero consectetur nam perferendis optio voluptatum omnis debitis nisi aliquid corrupti minima, hic esse officiis ipsum. Minus, iusto. Similique voluptate reprehenderit rem delectus. Odio, accusantium doloremque!
+            Excepturi hic eaque sequi recusandae dolore sit mollitia, similique autem voluptatum dolorem optio harum vitae ipsum perferendis labore ea quas tempora voluptas molestiae ad suscipit nemo natus. Id, nisi nostrum.
+            Id accusantium explicabo rerum fuga officia quae culpa illo assumenda maiores, ducimus eligendi veritatis, ad in! Maxime illo nihil laudantium! Harum repellat nesciunt esse. Commodi perferendis dignissimos quaerat modi optio!
+       </div>
+       <div class='right'>页面的右侧部分
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis possimus aperiam saepe, placeat ad hic illum deleniti cumque beatae non sed facilis nulla, excepturi adipisci debitis quasi minus at nobis.Adipisci voluptas omnis quae aliquam odio voluptate eveniet, magni deleniti! Iure soluta reiciendis doloribus iste, inventore, ipsam incidunt eaque nostrum necessitatibus animi suscipit asperiores dolores odit a, debitis tempore! Illum.
+       </div>
+   </div>
+</body>
+<!-- 在 PC 下  900px   2 6 2 
+        在 pad下  990~ 700   3 7  右侧隐藏
+        在phone下  700以下   各100%  
+-->
+</html>

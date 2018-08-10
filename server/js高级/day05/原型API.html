@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1. 判断变量的数据类型 -> 写类型JS TypeScript
+    var n = 1,
+      s = 'a',
+      b = true,
+      nl = null,
+      und = undefined,
+      arr = [],
+      fun = function () {},
+      obj = {};
+    // 使用 typeof 
+    console.log(
+      typeof n,
+      typeof s,
+      typeof b,
+      typeof nl,
+      typeof und,
+      typeof arr,
+      typeof fun,
+      typeof obj
+    );
+
+    // 2. instanceof 
+    console.log(
+      arr instanceof Array,
+      fun instanceof Function,
+      obj instanceof Object
+    );
+
+    // 打印对象的class属性 
+    console.log(
+      Object.prototype.toString.call(n),
+      Object.prototype.toString.call(nl),
+      Object.prototype.toString.call(arr),
+      Object.prototype.toString.call(obj)
+    );
+    if (Object.prototype.toString.call(arr) === '[object Array]') {
+      console.log('打印成功!');
+    };
+  </script>
+</body>
+
+</html>

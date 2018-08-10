@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// 声明提前  
+  // 例子1 
+  // alert(a); // undefined 
+  // a();      // undefined()  报错
+  // var a = 3; 
+
+  // 例子2 
+  // var b;
+  // function b(){
+  // 	alert(10);
+  // };
+  // alert(b); // function(){alert(10)}
+  // b = 6;    
+  // b();     // 6() 报错
+
+
+  // 例子3 
+  alert(c); //  function c(){ ... } 
+  c();      //  10
+  var c = 3;
+   
+  function c(){
+  	alert(10);
+  };
+  alert(c); // 3
+  c = 6;
+  c();      // 报错 
+
+
+
+</script>
+</body>
+</html>

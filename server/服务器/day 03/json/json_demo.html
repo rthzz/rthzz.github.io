@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        select,
+        ul {
+            float: left
+        }
+    </style>
+</head>
+
+<body>
+    <select id="prov">
+        <option>请选择</option>
+        <option>江苏省</option>
+        <option>四川省</option>
+        <option>安徽省</option>
+    </select>
+    <ul id="city"></ul>
+    <script>
+        prov.onchange = function () {
+            //最开始清除之前的li
+            city.innerHtml = ''
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', '02.php');
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var date = JSON.parse(xhr.responseText);
+                    //判断当前选项的内容prov.value
+                    //放入date对象中,取到了对应的值
+                    var temp = date[prov.value]
+                    //遍历temp数组,每遍历一个就创建一个li
+                    if (temp) {
+                        for (i = 0; i < temp.length; i++) {
+                            var li = document.createElement('li')
+                            li.innerHTML = temp[i]
+                            city.appendChild(li);
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

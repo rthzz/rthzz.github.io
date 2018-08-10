@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <button id='btn'>事件的定义 - 1</button>
+        <button id='btn2'>事件的定义 - 2</button>
+        <ul id='ul_list'>
+            <li>这是列表 - 1</li>
+            <li>这是列表 - 2</li>
+            <li>这是列表 - 3</li>
+        </u>
+    <script>
+    // 事件的定义  
+       // 1. 普通定义 
+       var btn  = document.getElementById('btn');
+       btn.onclick = function(){
+           alert('点击事件被触发');
+       };
+      // 2. 使用 事件监听 API  addEventListener()
+      var btn2 = document.getElementById('btn2');
+     //   btn2.addEventListener('click',fun);
+      // fun 是事件处理函数   - handler 事件处理句柄
+     //   function fun(){
+     //       alert('使用事件监听函数的API');
+     //   }
+      // 等同于上面的写法  - 推荐 
+      btn2.addEventListener('click',function(){
+         // 事件处理函数内部的 this 指向 当前DOM元素
+         console.log(this);
+      });
+
+      // 事件代理  - 将事件统一定义在其父元素上 
+      ul_list.addEventListener('click',function(e){
+           // alert 当前 元素的内容 
+           alert(e.target.innerHTML); 
+      }); 
+
+
+    </script>
+</body>
+</html>

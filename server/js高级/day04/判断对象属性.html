@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+  function Person(sname){
+  	 Person.prototype.sname = sname;
+  };
+  var xm = new Person('小明');
+  xm.sage = 22;
+
+
+// 判断属性是共有还是自有 
+  function checkAttr(obj,attrName){
+     if(obj.hasOwnProperty(attrName)){
+        console.log(attrName+'是自有属性');
+     }else if(attrName in obj){
+        console.log(attrName+'是共有属性');
+     }else{
+        console.log(attrName+'没有');
+     }
+  };
+  checkAttr(xm,'sname'); 	
+  checkAttr(xm,'sage');	
+  checkAttr(xm,'work');	
+</script>	
+</body>
+</html>

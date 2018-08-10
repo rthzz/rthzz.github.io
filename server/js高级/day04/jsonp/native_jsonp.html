@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id='btn' value='jsonp原生实现'>
+    <script>
+        btn.onclick = function(){
+            // 动态的添加 script 标签 
+            var script = document.createElement("script");
+            script.src= 'http://127.0.0.1/server/day04/jsonp/01.php?callback=getJson';
+            document.body.appendChild(script);
+        }
+        //  getJson 函数就是 callback
+        function getJson(data){
+             // data 就是跨域请求来的数据
+             console.log(data); 
+        }
+    </script>
+</body>
+</html>

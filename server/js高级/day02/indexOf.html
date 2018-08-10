@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+ // str.indexOf() 
+ var str1 = 'www.baidu.com';
+ console.log(str1.indexOf('baidu'));// 4 下标
+ console.log(str1.indexOf('baidu',5));// -1
+
+ // 例子1  
+ var msg='no can no bibi,you can you bibi, who bibi';
+ // 查找关键字 'bibi'  
+ // indexOf('bibi'); 循环 调用 indexOf()  
+ function fun(str,temp){
+ 	for(var i=0;i<str.length;i++){
+ 		console.log(i); // 14
+ 		//   10 
+    var index = str.indexOf(temp,i);
+    if(index!=-1){
+    	// 给 i 重新赋值 = 找到的关键字的下标+
+    	// 关键字的 length
+      i = index + temp.length - 1; // 13
+      console.log(i);
+      // console.log('在 '+index + ' 位置找到敏感字');	
+    }
+ 	}
+ };
+ fun(msg,'bibi');
+ 
+ var str2 = '1013089';
+
+ // 例子2 利用 indexOf() 去字符串重复数 
+ // 字符串去重
+ function rem(str){
+   // 1. 循环遍历 str, 并声明空数组 arr 
+   for(var i=0,arr=[];i<str.length;i++){
+      // 2. 如果去arr中查找 str[i],没有找到
+      if(arr.indexOf(str[i]) === -1){
+        // 3. 就把当前的字符 str[i],压入arr中
+        arr.push(str[i]); 
+      }    
+   }
+   // 4. 返回 arr
+   return arr.join(''); 
+ };
+ console.log(rem(str2));
+  
+ // 例子3 原生字符串去重,不使用indexOf() 
+ // var arr = [1,2,3,4]; j 4 = 4 arr.length
+ function toRepeat(str){
+   for(var i=0,arr=[];i<str.length;i++){
+     //              2
+     for(var j=0;j<arr.length;j++){
+      // 数组当前元素  == str当前元素
+       if(arr[j] === str[i]){
+         break; 
+       }
+     };
+     // 0      2
+     if(j === arr.length){
+        arr.push(str[i]); 
+     }
+   }
+   return arr.join('');
+ };
+ console.log(toRepeat(str2));
+
+</script>
+</body>
+</html>

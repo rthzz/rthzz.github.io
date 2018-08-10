@@ -1,0 +1,76 @@
+js四大特点
+1 脚本语言
+2解释执行
+3弱类型
+4基于面向对象:封装 继承 多态
+十一个对象
+number string boolean|date math regexp| function object arry error| global
+
+arry 数组
+程序=数据结构+算法
+数组:数组是一种常见的存储数据的结构,分为索引数组和关联数组
+
+1 创建-索引数组
+索引数组下标从零开始
+var arr=[]
+2关联数组(hash数组)
+关联数组的下标可以自定义
+var arr02= new Arry()
+arr[key]=value;
+//  键    值   ->键值对
+// 自定义 
+注意:在关联数组中,length属性失效,永远为0
+
+3.数组API-方法
+1.将数组转换为字符串
+arr.toString();输出数组的内容,用逗号隔开
+arr.join('连接符');输出数组的内容,
+连接符自定义.
+join('');连接符为空,就是字符串拼接
+join();没有连接符和toString一样
+
+2.拼接和截取
+ 1.拼接:arr.concat()
+var newarr=arr1.concat(arr2,值1,值2)
+ 2.截取:arr.slice()
+ var newarr=arr1.slice(starti,endi);
+ 原则:包含开头,不包含结尾
+ 1.第二参数没有,表示截取到最后
+ 2.参数可以为负数
+ 3.没有参数,就把原数组复制一份
+ 注意:不会改变原数组
+ 返回一个新的数组
+
+ 3.arr.splice()删除 插入 替换
+   1.删除:arr.splice(starti,n);n表示删除个数
+                                 没有n表示删除到结尾
+    2.插入:arr.splice(starti,0,新值1,...)
+    3.替换:arr.splice(starti,n,新值1....)  删除几个补几个
+
+                                
+    4.arr.reverse()颠倒数组里的元素
+    5.arr.sort()数组排序
+       1.sort方法默认将所有元素转换为字符串再升序排列
+
+        2比较器函数:专门比较任意俩值大小的函数
+        arr.sort(function(a,b){return a-b})
+        a,b表示要比较的两个任意值
+        a-b:正数a>b 升序排
+        b-a;        降序排
+        a-b:0     不变
+    6.栈和队列
+      在js中没有栈和队列的结构,
+      但是可以用数组模拟
+      栈结构:一端封闭,另一端进出的数组
+             后进先出 : last-in  first-out
+       1.末尾出入栈:
+           入栈:arr.push()压入
+           出栈:arr.pop()弹出
+       2.开头出入栈:
+            入栈:arr.unshift
+            出栈: arr.shift
+         开头出入栈,每次入栈新元素
+         已入栈de元素下标都会往后顺移
+     队列结构:一端进,另一端出.
+     末尾进入:arr.push()->arr.shift
+               

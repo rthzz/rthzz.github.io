@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id='c1' width='400' height='400'>
+        <!-- 如果浏览器不支持canvas,会显示这句文本  -->
+       当前浏览器不支持canvas元素
+  </canvas>
+  <!-- 绘制三角形 -->
+  <canvas id='c2' width='400' height='400'>
+  </canvas>
+  <canvas id='c3' width='400' height='400'>
+    </canvas>
+</body>
+<script>
+// 创建画布对象  
+    // 1. 获取canvas元素 
+    var c1 = document.getElementById('c1');
+    // 2. 调用 getContext()  
+    var  ctx =  c1.getContext('2d');
+    // ctx 就是画布对象 
+    console.log(ctx); 
+    // 绘制直线 
+    ctx.beginPath(); // 开始路径  
+    ctx.moveTo(10,10); // 绘制起点 
+    ctx.lineTo(100,100); // 绘制下一个点 
+    ctx.closePath();  // 结束绘制
+    // 设置 颜色  宽度 填充 
+    ctx.strokeStyle ='red';
+    ctx.lineWidth = '10';
+    // 绘制颜色 宽度要在 绘制方法 之前
+    ctx.stroke(); 
+
+// 绘制 三角形 
+  var c2 = document.getElementById('c2');
+  var ctx2 =  c2.getContext('2d');
+  // 开始绘制 
+  ctx2.beginPath();
+  ctx2.moveTo(10,10);
+  ctx2.lineTo(100,100);
+  ctx2.lineTo(300,10);
+  ctx2.closePath();
+  // 填充  路径
+  ctx2.strokeStyle = 'blue';
+  ctx2.lineWidth = '10';
+  // 设置边角 
+  ctx2.lineJoin = 'bevel';
+  ctx2.stroke(); 
+
+
+
+</script>
+<script>
+   // 绘制一个等腰三角  
+   var c3 = document.getElementById('c3');
+   var  ctx = c3.getContext('2d');
+   // 开始绘制  
+   ctx.beginPath();
+   ctx.moveTo(200,10);
+   ctx.lineTo(50,300);
+   ctx.lineTo(350,300);
+   ctx.closePath();
+   ctx.fillStyle = 'green';
+   ctx.fill();
+   //  练习:  绘制两个相交的三角形  
+</script>
+</html>

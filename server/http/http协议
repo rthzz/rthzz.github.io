@@ -1,0 +1,104 @@
+http协议 day02
+  http 协议(hypertext transfer protocol)
+           超文本传输协议
+http协议是什么 为什么浏览器输入http协议就能访问到页面
+
+  1 http 协议是互联网应用中,客户端与服务端之间进行通信的协议,http协议采用了请求/响应的工作方式
+        并且规定了请求/响应的数据格式
+
+  2 当我们在浏览器上输入访问的url值,浏览器会分析url的域名,然后通过dns服务器查询域名映射的IP地址,浏览器
+  再根据查找到的ip与web 服务器进行通信,通信协议是http协议
+
+  3 http协议是构建在tcp协议上的,是tcp协议的一个子集,所以要了解http,必须了解tcp
+
+  http和tcp关系
+   传输数据可以只使用tcp协议,但是这样的话没救没有应用层就无法识别数据类型,数据没有意义,所以必须要有应用层
+
+   建立tcp的三次握手 客户端->服务器端
+   1
+
+
+
+   http特点
+    1简单快速:发送请求只需请求方法和地址
+    1灵活:http请求允许传输任意类型的数据
+    3无连接:限制每次连接值处理一个请求,处理完,断开连接
+    4无状态:数据传输过程中,服务器不会保存任何历史信息
+    5传输性可靠:采用tcp作为传输层协议的,需要tcp的三次握手才会建立连接
+    6兼容性:支持b/s架构和c/s架构
+
+5.http的版本
+ http1.0
+ http1.1->主流
+ http2.0
+
+ 6.http协议->报文信息
+ 请求报文  响应报文
+    1请求报文
+     http请求报文 包含三个部分
+      请求行 请求头 请求体
+       1,1请求行分为三个部分
+          method url http版本号  www.baidu.com
+          get     /   http1.1
+       1.2 请求头 
+          http1.1中规定了47个字段类型 以键值对出现
+          Accept;指定客户端接收的内容类型
+          Accept-Encoding:浏览器支持解码的数据压缩格式
+                          gzip-服务器端的压缩格式
+                        
+          Accept-Language:浏览器的语言环境
+                          zn-CN zh- 简体中文
+                          us-en-英文
+
+         connection:表示当前的连接状态
+            keeo-alive
+
+        host:请求的服务器ip地址
+        refer;表示当前的请求源于哪里
+        user-agent:表示当前用户的浏览器信息
+        cookie:服务器向客户端发送的cookie信息,可以让http请求携带部分数据
+        content-type:请求的数据类型
+        content-length:请求的数据长度
+
+        响应体
+        响应体里面的内容才是我们真正想要的内容
+
+
+
+        ajax的五步使用法
+           1创建xmlhttprequest 
+           var xhr=new xmlhttprequest ()
+           2建立连接
+           xhr.open(method,url)
+           3 发送请求
+           xhr.send(date);
+           4注册监听
+           onreadystaechange 事件-
+         
+
+            readystate属性
+           0-请求还没开始
+           1-请求已建立,但是还没发送
+           2-请求已发送,正在处理
+           3-请求处理中,通常响应中已有部分数据,但是服务器还没有完成响应
+           4-响应已完成
+
+           staus属性
+           200 ok
+
+        5拿到数据对数据进行处理
+        responsetext
+
+
+
+
+
+
+
+
+
+
+
+
+
+

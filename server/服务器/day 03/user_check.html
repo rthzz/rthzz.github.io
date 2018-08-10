@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>用户名检查</h2>
+    <form action="">
+        <input type="text" placeholder="请输入用户名" id="user">
+        <div id="tips"></div>
+    </form>
+    <script>
+        user.onblur = function () {
+            var username=this.value
+            var xhr =new XMLHttpRequest()
+            xhr.open('get', '01.php?user='+username);
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var date=xhr.responseText;
+                    if(date=='1'){
+                        tips.innerHTML='用户名已存在';
+                    }else{
+                        tips.innerHTML='用户名可使用'
+                    }
+                }
+
+            }
+        }
+        
+    </script>
+</body>
+
+</html>

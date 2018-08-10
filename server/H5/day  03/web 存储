@@ -1,0 +1,69 @@
+web存储(客户端存储)
+  什么是客户端存储
+    使用浏览器提供的API实现将数据存储到用户的电脑上,客户端存储赋予了浏览器的记忆功能
+    会话控制 
+    http协议特点:无连接(每次只处理一个请求,响应完成直接断开) 无状态(每次请求,服务器是不会记录该次请求是谁发送的)
+     会话控制就是:在网站中根据一个会话来跟踪我们的用户,从而呈现用户需要的内容
+
+     Cookie  网景公司发明(1993)
+      1,在http协议中 采用一种机制来记录客户端和服务器端交互的信息,这种机制叫Cookie.有了cookie服务器就可以通过用户信息来判断
+      是谁
+      2 cookie一般是服务器端生成,在客户端维护和存储
+       cookie 分为两类:
+          1 非持久cookie:保存在内存中,由浏览器来维护,浏览器关闭就会消失(内存cookie)
+          2 持久cookie:  保存在硬盘中,长有效,用户可以设置cookie的有效时间
+
+
+    cookie 的使用场景 
+        永久登录: 添加购物车
+
+
+
+
+cookie的使用
+   通过客户端 doucument.cookie 来读写 cookie
+
+cookie 属性
+ name  :
+ value:
+ expires/Max-age:expires 属性决定cookie的有效时间
+ 如果不设置有效时间,就是非有效cookie
+ Max-age:一秒 为单位的有效时间,逐级取代了expires属性
+
+ path :这个属性匹配的是文件路径,默认是根路径 "/"
+
+ domain :设置cookie所在的域,如果没有设置就会自动绑定到执行语句的当前域
+ secure:安全性http协议本身是不安全的,https是安全的
+         值为true,就必须是https协议下才能发生cookie
+         默认为false
+httponly:设置值为true,不能通过js来读写cookie 防止跨域脚本的xxs攻击
+
+php中cookie的操作
+
+  php提供了方法setCookie($name,$nalue,$expird,$path,$domain,$secure,$httponly)
+
+
+ cookie的缺点
+           :cookie中尽量不要存敏感数据,不安全
+           每个域名下个数有限制的
+           cookie保存的数据大小有限制, key=value; 4kb
+        设置cookie之后每次请求都会附在http的请求头上
+
+ html 5中新增了本地存储的API .(webStorage)
+     localStorage和SeesionStorage
+localStorage
+保存得数据长期存在,下次访问网站时,网页可以直接读取以前保存在硬盘的数据
+设置值:
+读取值:
+删除值:
+全部删除:
+获取指定的key:
+
+
+
+indexDB
+优点:可以实现离线访问.数据存储量足够大
+缺点:兼容问题,ie11以上 API复杂 操作量大
+     
+
+

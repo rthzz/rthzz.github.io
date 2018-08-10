@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模块加载配置</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		{{"abcd"|initcase}}
+	</div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+	app.controller("ctrl",["$scope","$log",function($scope,$log){
+		$log.info("普通信息");
+		$log.log("打印信息");
+		$log.error("错误信息");
+		$log.warn("警告信息");
+		$log.debug("调试信息");
+	}]);
+	//模块加载的配置,通过app调用config方法
+	//参数:数组,前面的元素为依赖的对象,模块,最后一个元素表示功能,配置的具体内容
+	//对$log进行配置,需要依赖于$logProvider
+	app.config(["$logProvider","$filterProvider",function($logProvider,$filterProvider){
+		//禁用调试信息的打印
+		$logProvider.debugEnabled(false);
+		//使用$filterProvider给过9个滤器再添加一个过滤器
+		$filterProvider.register("initcase",function(){
+			return function(str){
+				return str[0].toUpperCase()+str.slice(1);
+			}
+		});
+	}]);
+</script>
+</html>

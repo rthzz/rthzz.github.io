@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script> // [ a, b, c, function fun1(){} ] 栈结构
+// JS 的数据类型 
+ // 1. 基本数据类型的赋值
+ var a,b,c;
+
+ a  = 10;
+ b = a;// 10  
+     a = 20;
+ console.log(b);  //  10
+
+ // 2. 引用类型的赋值 
+ c = [1,2,3];
+ var d = c;
+ c.pop();// [1,2]
+ console.log(d); // [1,2]
+
+// 函数的创建 
+ // 1. 声明式
+ // 声明提前 , 赋值留着原地 
+ // 函数调用位置前后都可以
+ fun1(3,3); // 6
+ function fun1(a,b){
+   return a+b;
+ };
+
+ var fun2;// undefined
+ //fun2(10,5); 报错
+ // 2. 直接量
+ // 直接量创建的函数,函数调用要在函数定义的后面 
+ fun2 = function(a,b){
+ 	   return a-b;
+ };
+ fun2(10,5); // 5
+
+ // 3. 使用 new 关键字 (不推荐)
+ var fun3 = new Function('a','b','return a/b');
+ console.log(fun3(1,2)); // 0.5
+
+  
+  function fun(){
+  	var a;
+  	console.log(a); // undefined
+  	a = 1;
+  };
+
+</script>
+</body>
+</html>

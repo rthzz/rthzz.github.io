@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #d1 {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            z-index: 1;
+        }
+
+        #d2 {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            margin: -100px 0 0 -100px;
+            position: absolute;
+            z-index: 10;
+        }
+
+        #d3 {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            z-index: 20;
+            margin: 30px 50px 0;
+        }
+
+        #d1,
+        #d2,
+        #d3 {
+            font-size: 20px;
+            border: 2px solid #333;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="d1">d1
+        <div id="d2">d2
+            <div id="d3">d3
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        // 获取 div 
+        var divs = document.querySelectorAll('div');
+        for(var i=0;i<divs.length;i++){
+            // 为每个div绑定click 事件
+            divs[i].addEventListener('click',fun, true);
+            // useCapture -> true 表示事件捕获阶段提前执行
+            // useCapture -> false(默认值) 表示事件冒泡阶段执行. 
+        }
+    }
+    // 事件流  - 事件冒泡  
+    function fun(e) { // e -> event 对象
+        // alert(this.id);
+        // 打印event对象
+        // console.log(e); 
+        // 兼容写法  event 
+        // var e = window.event || arguments[0];
+       alert(e.target.id);
+       // 阻止事件冒泡  
+       e.stopPropagation();
+    };
+</script>
+
+</html>

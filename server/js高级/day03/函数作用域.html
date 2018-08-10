@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// 函数作用域 例子 
+ var a = 10, b = 100;
+ function outer(){
+ 	 var a = 20;
+ 	 function inner(){
+ 	 	  var c = 30;
+ 	 	  console.log(b); //  100
+ 	 	  console.log(a); //  20
+ 	 }
+ 	 inner();
+ 	 console.log(c); // 报错
+ };
+ outer();
+
+
+ // 静态作用域 
+ var value = 1;
+ function foo(){ // 
+ 	  console.log(value);
+ };
+ function boo(){
+ 	  var value = 2;
+ 	  foo();
+ };
+ boo(); // 1  
+
+
+ // 例子1 
+ var scope = 'global scope';
+ function checkscope(){
+ 	  var scope = 'local scope';
+ 	  function f(){
+ 	  	return scope; 
+ 	  }
+ 	  return f();
+ }
+ checkscope();  // 'local scope'
+
+
+</script>	
+</body>
+</html>

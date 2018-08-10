@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 一次性定时器  setTimeout() 
+    //    clearTimeout(timer1);
+    //    var  timer1 = setTimeout(function(){
+    //         alert('timer1被执行1次');
+    //    },2000); // ms 
+    //    console.log(timer1);
+
+   // 反复执行的定时器  setInterval()
+   var i = 1;
+   var timer2 = setInterval(function(){
+       console.log(timer2);
+       alert('timer2被执行 '+i);
+       i++;
+       if(i>=3){
+           clearInterval(timer2);
+           timer2 = null;
+       }
+   },2000);
+
+  // 例子2  
+   var num = 0, max  =10, timer3 = null;
+    
+   timer3 = setInterval(fun, 500);
+   
+   function fun(){
+       num++;
+       if(num === max){
+           clearInterval(timer3);
+           alert('完成'); 
+       }
+   }
+ 
+
+
+
+</script>
+</body>
+</html>

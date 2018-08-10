@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  // 删除 IndexDB 对象  
+  // window.indexedDB.deleteDatabase('undefined');
+  
+  /* IndexDB 数据的创建
+  IndexDB 中没有表的概念, 而是 object store,一个数据库
+  可以有多个仓库, 一个仓库可以有多个对象. 
+  object store 就相当于一张表,里面存放每条数据和一个键相关联.
+  注意: 创建object store 只能从 onupgradeneeded 版本变化事件中进行. 
+  
+  */ 
+ // 创建 IndexDB 
+ var myDB = {
+   name: 'testDB',
+   version: 1,
+   db: null
+ };
+ function openDB(name){
+    var req = window.indexedDB.open(name);
+    req.onerror = function(){};
+    req.onsuccess = function(e){
+      myDB.db = e.target.result;
+    };
+    // 创建 object store 
+    req.onupgradeneeded = function(){
+      var db = req.result;
+       // 开始创建 createObjectStore(storeName,keyPath); 
+        var myStore =  db.createObjectStore('king of glory',{keyPath:'pid'}); 
+       // 添加数据到 myStore 中  put();
+       myStore.put({hero: '猴子',auther:'小明',pid:'222'});
+       myStore.put({hero: '亚瑟',auther:'小红',pid:'333'});
+       myStore.put({hero: '李白',auther:'小王',pid:'666'});
+      } 
+ };
+ openDB(myDB.name);
+
+// 在IndexDB中, 我们可以使用 事务来操作数据库,事务有三种
+// readOnly: 只读
+// readwirte:  读写
+// verisonchange: 数据库版本变化 
+// 首先我们要创建一个事务, transaction(storeName, option);
+// 参数: storeName 仓库的名字, option: 事务模式. 
+setTimeout(function(){
+  var transaction = myDB.db.transaction("king of glory",'readwrite');
+  // 获取 object store 的数据 
+  var  objectStore =  transaction.objectStore('king of glory');
+  // 对预先设置的 keyPath 进行获取 
+  var  obj = objectStore.get('666');
+  console.log(obj);   
+  // 添加一组数据   add() 
+  // objectStore.add({hero:'白起',auther: 'jack', pid: '123' });
+  // 删除一组数据   以 keyPath 的值来删
+  objectStore.delete('666');
+},20);
+
+
+
+</script>
+</body>
+</html>

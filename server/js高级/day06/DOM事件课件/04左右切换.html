@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    select {
+      width: 170px;
+      height: 200px;
+      font-size: 16px;
+      background-color: #999;
+      outline: none;
+    }
+
+    select option {
+      font-size: 18px;
+      padding: 10px;
+      border: 1px solid #ddd;
+
+    }
+
+    select,
+    #choice {
+      float: left;
+    }
+
+    #choice>input {
+      display: block;
+      width: 80px;
+      height: 50px;
+      margin-top: 10px;
+      padding: 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <select id="sele1" size="10">
+    <option value="0">衣服</option>
+    <option value="1">包包</option>
+    <option value="2">鞋子</option>
+    <option value="3">化妆品</option>
+  </select>
+  <div id='choice'>
+    <input type="button" value=">>>" />
+    <input type="button" value="<<<" />
+    <input type="button" value=">" />
+    <input type="button" value="<" />
+  </div>
+  <select id="sele2" size="10">
+    </select>
+</body>
+
+</html>

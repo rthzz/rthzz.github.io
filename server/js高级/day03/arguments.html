@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// 重载 , JS不支持的 
+  function over(a,b){
+    return a+b;
+  };
+  function over(a){
+  	return a*10;
+  };
+  console.log(over(10,10));//  100
+  // 等同下面这种写法
+  var over = function(a,b){
+  	return a+b;
+  }
+  over = function(a){
+  	return a*10;
+  };
+  // over(10,10);
+
+
+  // arguments 类数组对象
+  function sum(){
+    // 打印 arguments 对象 
+    console.log(arguments);
+    console.log(arguments[0]);
+    console.log(arguments.length);
+    for(var i=0;i<arguments.length;i++){
+      console.log(arguments[i]);
+    }
+    // 使用数组的 API 
+    // arguments.push(6); 
+  };
+  sum(1,2,3,4,5);
+
+  // 如果用户传入一个参数,就求平方. 传入两个参数,就求和
+  function subTemp(){
+     if(arguments.length == 1){
+        return arguments[0]*arguments[0];    
+     }else if(arguments.length == 2){
+     	  return arguments[0]+arguments[1];   
+     }
+  };
+  subTemp(8);// 64
+  subTemp(10,10);// 20
+
+  // 练习: 无论用户传入几个参数,都可以求参数的和
+  function sum2(){
+     for(var i=0,t=0;i<arguments.length;i++){
+       t += arguments[i];
+     }
+     return t;
+  } 
+  sum2(1,2,3,4,10,9,8);
+</script>	
+</body>
+</html>

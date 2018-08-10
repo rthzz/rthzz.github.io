@@ -1,0 +1,64 @@
++
+--<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// 作用域链的创建过程 
+ var a = 1;
+ function foo(x){
+ 	var b = 2;
+ 	function boo(){
+ 		var c = 3; 
+ 	}
+ 	boo();
+ };
+ foo(10);
+
+// 1. ECS 执行上下文栈 
+ ECS = [ globalEC ];
+
+// 2. foo 函数被创建就有一个 [[scope]] 属性
+foo.[[scope]] = global.VO;
+
+// 3. foo函数执行 fooEC  
+ ECS = [
+    globalEC,
+    fooEC
+ ];
+// 4. fooEC 保存着 foo.[[scope]] 和 AO 
+// 作用域链 Scope Chain = foo.[[scope]] + AO 
+ fooEC = {
+   scopeChain : [ foo.[[scope]], foo.AO  ];
+ }
+
+// 5. boo被创建, -> boo.[[scope]] 
+boo.[[scope]] = fooEC.scopeChain;
+
+// 6. boo被调用, 创建 booEC   
+  ECS = [
+    globalEC,
+    fooEC,
+    booEC
+ ];
+
+// 7. 创建 boo.scopeChain 
+booEC =  {
+  scopeChain: [ 
+     global.VO, 
+     foo.AO, 
+     boo.AO  
+  ];
+} 
+// 变量的查找就是沿着作用域链一直向上找,找到全局为止.
+
+
+
+
+
+</script>	
+</body>
+</html>

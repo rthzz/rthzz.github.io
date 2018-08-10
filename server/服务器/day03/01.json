@@ -1,0 +1,22 @@
+// 数组 
+["zhangwuji","zhouzhiruo","zhaoming"]
+
+// 对象 
+{
+    "name1": "zhangwuji",
+    "name2":"zhouzhiruo",
+    "age1": 30,
+    "work": null
+}
+// 数组对象组合 
+
+{
+    "歌手":["赵雷","汪峰"],
+    "演员":["杨幂","章子怡"]
+}
+
+// 组合2  
+ [
+    {"name1":"范冰冰"},
+    {"name2":"李冰冰"}
+ ]

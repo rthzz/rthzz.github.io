@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<button onclick='getCite(prompt("输入省份"))'>点击按钮</button>
+<script>
+//1将以下英文句子里的每个首字母转换成大写
+var abc='life was like a box of chocolates you never know what you are gonna get'
+         
+
+function upperCase(str){
+	var str=abc.split(' ');
+	// console.log(str);
+	for(i=0;i<str.length-1;i++){
+		// console.log(str[i][0]);
+		// 取每个单词的首字母,转换为大写再拼接其他字母,就得到结果,再把结果赋值给str[1]
+	str[i] =str[i][0].toUpperCase()+str[i].slice(1)	
+
+	}
+ return str.join(' ')
+}
+
+ console.log(upperCase(abc))  
+
+
+
+		
+
+
+
+
+		
+
+
+
+
+
+
+//2.省份的数组
+var provs=['江苏省','安徽省','四川省']
+//城市的数组
+var cities=[
+['南京市','苏州市','无锡市'] ,                    
+['合肥市','芜湖市','铜陵市'] ,                    
+['成都市','乐山市','绵阳市']  ,                   
+]
+
+ function getCite(text){
+ 	var index= provs.indexOf(text)
+ 	if(index!=-1){
+ 		alert(cities[index])
+ 	}
+
+ 			}
+ // alert(text)			
+ 			
+
+
+ 	
+
+                     
+
+
+
+</script>
+	
+</body>
+</html>

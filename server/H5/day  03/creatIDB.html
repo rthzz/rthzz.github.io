@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>     
+    //删除indexDB对象
+    //window.indexedDB.deleteDatabase('undefined')
+    
+    //indexedDB数据的创建
+   // indexedDB没有表的概念,而是object store,一个仓库可以有多个对象,
+   //一个数据库可以有多个仓库,一个仓库有多个对象
+   //object store 相当于一个表,里面放每条数据和一个键相关联
+   //注意:创建object store 只能从onupgradeneeded版本变换事件中进行
+
+ //创建indexDB
+ var myDB={
+        name:'testDB',
+    version:1,
+    db:null,
+
+    };
+    function openDB(name){
+        var req =window.indexedDB.open(name);
+        req.onerror=function(){};
+        req.onsuccess=function(e){
+        
+            myDB.db=e.target.result;
+            };
+         //创建 object store 
+         req.onupgradeneeded=function(e){
+             var db=req.result;
+             //开始创建creatObjectStore
+               var myStore=db.creatObjectStore('king of glory',{keyPath:'pid'})
+               //添加数据到myStore put()
+               myStore.put({hero:'猴子',auther:'小明',pid:'222'});
+               myStore.put({hero:'亚瑟',auther:'小红',pid:'333'});
+               myStore.put({hero:'李白',auther:'小王',pid:'666'});
+
+               //首先创建一个事务 transaction(storname,option)
+   //参数:storname 仓库的名字  option :事务的模式
+   var transaction=  db.transaction('king of glory','readwrite');
+   //获取 object store 的数据
+  var ObjectStore=  transaction.ObjectStore('king of glory');
+  //对预先设置的keyPath进行获取
+ var obj= ObjectStore.get('222');
+ console.log(obj);
+ //添加数据
+ ObjectStore.add({hero:'白起',auther:'jack',pid:'123'});
+ //删除数据 以keyPath的值
+ ObjectStore.delete('123')
+
+
+         }
+    
+}        
+
+
+   openDB(myDB,name); 
+   // 
+   //redonly:只读
+   //readwrite:读写
+   //verisonchange:数据库版本变化
+   
+
+
+
+
+
+    </script>
+</body>

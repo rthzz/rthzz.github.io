@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src='./jquery.min.js'></script>
+</head>
+
+<body>
+  <button id='btn' type='button'>
+    jQuery中Ajax的get方法
+  </button>
+  <script>
+    // 调用 $_get(url,data,callback,dataType) 
+    btn.onclick = function () {
+      // 调用 $.get()
+      // dataType: 'json'   JQ会自动帮你把json格式转化成JS对象
+      $.get('01.php',{name: 'xiaoming'},function (data) {
+        console.log(data);
+      },'json');
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数组 - 切换图片案例</title>
+  <style>
+    .imageBox {
+      width: 460px;
+      height: 306px;
+      border: 1px solid #999;
+    }
+
+    .btnBox {
+      margin-top: 10px;
+    }
+
+    button {
+      width: 100px;
+      height: 30px;
+      outline: none;
+    }
+
+    span {
+      display: inline-block;
+      border: 1px solid #F59797;
+      width: 28px;
+      line-height: 28px;
+      text-align: center;
+      border-radius: 50%;
+      margin-left: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class='imageBox'>
+    <img src="./image/48.jpg" id='img'>
+  </div>
+  <div class='btnBox'>
+    <button onclick='toggle(this)'>上一张</button>
+    <button onclick='toggle(this)'>下一张</button>
+    <span id='num'>1</span>
+  </div>
+</body>
+<script>
+  // 用数组来保存图片数据 
+  var arr = ['./image/48.jpg','./image/49.jpg','./image/50.jpg','./image/51.jpg'];
+  // 声明变量 index 来记录数组的当前下标
+  var index = 0;
+  // 写一个事件处理函数 toggle 
+  function toggle(btn){ // btn 表示当前点击的按钮
+    // 判断当前按钮是上一张还是下一张
+    if(btn.innerHTML === '下一张'){
+    	if(index >= 3 ){
+          index  =  -1;   
+    	}
+      img.src = arr[++index];
+    }else if(btn.innerHTML === '上一张'){
+      if(index <= 0 ){
+          index = 4;   
+      }
+      img.src = arr[--index];
+    }
+    num.innerHTML = index+1; 
+  } 
+</script>
+</body>
+
+</html>

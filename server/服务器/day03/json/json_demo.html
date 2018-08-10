@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    ul {
+      list-style: none;
+    }
+
+    select,
+    ul {
+      float: left
+    }
+  </style>
+</head>
+
+<body>
+  <select id='prov'>
+    <option>-请选择-</option>
+    <option>-江苏省-</option>
+    <option>-四川省-</option>
+    <option>-安徽省-</option>
+  </select>
+  <ul id='city'></ul>
+</body>
+<script>
+  // 当下拉菜单状态发生改变时  change事件 
+  // 发起Ajax请求  get  
+  //  数据 -> xhr.responseText  
+  //  解析数据 成 html 格式 
+  prov.onchange = function () {
+    // 最开始清除 之前的 li
+    city.innerHTML = ''; 
+    // 1. 创建 xhr 对象 
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', '02.php');
+    xhr.send();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        var data = JSON.parse(xhr.responseText);
+        // 判断 当前选择的内容 prov.value.slice(1,-1) 
+        // 当前内容 放入 data 对象中, 取到对应的值 
+        var temp = data[prov.value.slice(1, -1)]; 
+        // 遍历 temp 数组, ,每遍历一个就创建一个li
+        if(temp){
+          for (var i = 0; i < temp.length; i++) {
+            var li = document.createElement('li');
+            li.innerHTML = temp[i];
+            city.appendChild(li);
+          }
+        } 
+      }
+    }
+  }
+</script>
+</html>

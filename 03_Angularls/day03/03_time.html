@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$timeout-$interval</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		{{time}}
+		<br>
+		{{num}}
+		<br>
+		{{msg}}
+		<div>
+			<input type="button" value="开始" ng-click="start();">
+			<input type="button" value="停止" ng-click="stop();">
+		</div>
+		<div>
+			当前时间:{{show}}
+		</div>
+		<div>
+			<input type="button" value="单击" ng-click="toggle();">
+		</div>
+		<div>
+			当前时间:{{date}}
+		</div>
+	</div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+	app.controller("ctrl",function($scope,$timeout,$interval,$filter){
+		var d = $filter("date");
+		var id;
+		$scope.toggle = function(){
+			// alert("toggle");
+			// 单击按钮,如果计时器在执行,就停止,处于停止的状态,就执行
+			if(id){
+				//id有值,说明计时器在执行,需要停止
+				$interval.cancel(id);//停止计时
+				//清空id
+				id = "";
+			}else{
+				//否则执行计时器
+				id = $interval(function(){
+					$scope.date = d(new Date(),"yyyy-MM-dd HH:mm:ss");
+				},1000);
+			}
+		}
+
+
+
+		/*$scope.start = function(){
+			//在生成新的id前先清除之前的id
+			$interval.cancel(id);
+			// alert("start");
+			// 单击按钮,计时器开始计时
+			id = $interval(function(){
+				$scope.show = d(new Date(),"yyyy-MM-dd HH:mm:ss");
+			},1000);
+			console.log("start:",id);
+		}
+		$scope.stop = function(){
+			console.log("stop:",id);
+			// alert("stop");
+			// 单击按钮,停止计时
+			// clearInterval(id);该方法是js中停止的方法
+			// AngularJs的停止的方式是cancel
+			$interval.cancel(id);
+		}*/
+
+		/*$timeout(function(){
+			$scope.msg = "3秒时间已到";
+		},3000);
+		var i = 0;
+		$interval(function(){
+			$scope.num = ++i;
+		},1000);
+		var d = $filter("date");
+		$interval(function(){
+			$scope.time = d(new Date(),"yyyy-M-d HH:mm:ss");
+		},1000);*/
+
+	})
+
+
+</script>
+</html>

@@ -1,0 +1,91 @@
+一、内置服务($http)
+	POST的有参无参请求
+	01_post.html
+
+	练习01:
+		发送请求,服务器读取一个json文件
+		[
+			{"id":"101","name":"zhangsan","age":23},
+			{"id":"102","name":"Jim Green","age":22},
+			{"id":"103","name":"Lucy","age":24},
+			{"id":"104","name":"Lily","age":22},
+			{"id":"105","name":"Kate","age":23},
+			{"id":"106","name":"wangwu","age":21}
+		]
+		解析返回的数据,以table的形式展示
+		编号  姓名      年龄
+		101   zhangsan   23
+		102   Jim Green  22
+
+		post发送请求,传递参数:
+			username="zhangsan"
+			password="123456"
+		服务器接收参数,并返回参数
+
+二、自定义服务
+	通过app调用某个方法来定义服务
+		service(02_service.html)
+		factory(02_factory.html)
+		value
+
+三、模块加载配置
+	启动--初始化--编译、链接--运行
+	使用app调用config方法来对模块进行配置
+	AngularJs中的服务绝大部分都有一个对应的provider,用于执行与之对应服务的功能进行配置。
+	比如：$filterProvider,$locationProvider,$logProvider
+	03_config.html
+
+
+四、路由
+	SPA
+	Single Page Application
+	单页面应用
+	只有一个页面,通过这个页面来展示所有功能,使用Ajax动态获取数据,然后加载到该页面上
+	特点:
+		1、只有一个页面，不会产生页面跳转的情况
+		2、将若干功能集中到一个页面上展示
+			(index.html,将其他功能页面单独做成一个视图)
+		3、动态生成数据，通过Ajax获取
+		4、增强性能，提高用户体验度
+		5、模仿手机app应用
+	单页面应用的要求:
+		1. 只有一个页面,但是可以有多个视图
+		2. 链接必须使用锚点
+--
+		04_route.html
+	前端中的路由就是锚点,AngularJs对这个实现原理进行了封装,将锚点的变化封装成了路由(route)
+
+	使用AngularJs中的route
+		04_route2.html
+
+	步骤:
+		1. 引入angular-route.js与angular.min.js文件
+			因为angular-route.js依赖angular.min.js
+			先引入angular.min.js,后引入angular-route.js
+		2. 创建模块
+			var app = angular.module("app",["ngRoute"]);
+			加入依赖的路由模块名
+		3. 配置路由
+			通过$routeProvider对路由进行配置
+			app.config()来进行模块的配置
+			使用$routeProvider调用when方法来进行具体的配置
+				第一个参数是字符串,表示地址(锚点值)
+				第二个参数是对象,表示具体的内容
+				该对象中可以包含的属性有:
+					template:返回一个字符串
+					redirectTo:将请求转发给另一个路由处理
+					templateUrl:引入外部页面(视图)
+					controller:调用指定名称的控制器,并将绑定的数据发送给视图,即:controller需要配合templateUrl来使用
+			$routeProvider还可以调用一个方法other()
+			otherwise方法只有一个参数,对象,没有路径,用于对when方法的一个补充,当前面所有的when都处理不到的时候,就由otherwise来处理
+		4. 在视图中写一个占位符
+			在某个节点上添加ng-view指令
+			ng-view只负责数据的展示,不负责数据的解析
+
+
+
+作业:
+	1. 页面设置2个链接
+		点击第一个链接,显示红色的圆形
+		点击第二个链接,显示蓝色的方形
+	2. 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// 1. 简单的回调函数 
+ $('elem').click(function(){
+ 	// 事件回调函数
+ 	console.log('...');
+ });
+
+// 2. 将函数作为参数传入另一个函数
+ function getCall(callfn,data){
+   return callfn(data);
+ };
+ // function callback(n){
+ //   return n + 10;
+ // };
+ 
+ // 更简洁的写法  
+ getCall(function(n){
+ 	return n + 10;
+ },10); // 20  
+
+ 
+
+
+
+
+
+</script>
+</body>
+</html>

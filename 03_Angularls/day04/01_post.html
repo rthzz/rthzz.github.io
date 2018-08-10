@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$http服务之post</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		<input type="button" value="post无参" ng-click="f1();">
+		<input type="button" value="post有参" ng-click="f2();">
+		<div>
+			{{data}}
+		</div>
+	</div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+	app.controller("ctrl",["$scope","$http",function($scope,$http){
+		$scope.f1 = function(){
+			//post无参请求
+			$http({
+				url:"data.php",
+				method:"post"
+			}).success(function(result){
+				console.log(result);
+				$scope.data = result;
+			});
+		}
+		$scope.f2 = function(){
+			//post有参请求
+			$http({
+				url:"data.php",
+				method:"post",
+				// params:{name:"zhangsan"}
+				// post传递参数时,不能使用params:{name:"zhangsan"}
+				// 应该使用data:"name='zhangsan'"
+				// post有参请求时,需要先设置消息头,否则参数是以get方式获取的
+				headers:{"Content-Type":"application/x-www-form-urlencoded"},
+				data:"name='zhangsan'"
+			}).success(function(result){
+				console.log(result);
+				$scope.data = result;
+			})
+		}
+	}]);
+</script>
+</html>

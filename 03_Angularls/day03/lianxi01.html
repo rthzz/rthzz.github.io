@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-app="app">
+	<input type="text" ng-model="msg">
+	<div>
+		{{msg|lianjie}}
+	</div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+	app.filter("lianjie",function(){
+		return function(msg){
+			if(!msg){
+				return ;
+			}
+			var arr = msg.split("");
+			// return arr.join("-");
+			var str = "";
+			/*for(var i=0;i<arr.length-1;i++){
+				str+=arr[i]+"-";
+			}
+			str += arr[arr.length-1];
+			return str;*/
+			for(var i=0;i<arr.length;i++){
+				if(i<arr.length-1){
+					str+=arr[i]+"-";
+				}else{
+					str+=arr[i];
+				}
+			}
+			return str;
+		}
+	});
+</script>
+</html>

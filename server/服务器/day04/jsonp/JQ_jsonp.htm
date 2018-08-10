@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src='../JQ_Ajax/jquery.min.js'></script>
+</head>
+
+<body>
+  <input type="button" id='btn' value='$.ajax发起jsonp请求'>
+</body>
+<script>
+  btn.onclick = function () {
+    // 使用 $.ajax()  
+    $.ajax({
+      // url要使用绝对路径, 路径要写完整
+      url: 'http://127.0.0.1/server/day04/jsonp/01.php',
+      dataType: 'jsonp', // 这是和普通Ajax请求的区别 
+      // 这是我们自定义的 callback 函数
+      jsonpCallback: 'jspCall',
+      // success: function (data) {
+      //   console.log(data);
+      // }
+    });
+  }
+  function jspCall(data){
+      console.log('这是我们自定义的函数');
+      console.log(data);
+  }
+</script>
+
+</html>

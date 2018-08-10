@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="text">
+    <button id="btn" type="button" >点击按钮</button>
+</body>
+<script>
+//在输入框中输入nr,点击按钮把输入框的内容发送到服务器端
+//以json格式发送到后台
+btn.onclick=function(){
+    //获取输入内容
+    var text=document.getElementById('text').Value
+    //把text值转换为json格式
+    var user='{"date":"'+text+'"}';
+    var xhr=new XMLHttpRequest();
+    xhr.open("post","01.php");
+    xhr.setRequestHeader('Content-type','application/x-www-form-urlencode')
+    xhr.send('user=user');
+    xhr.onreadystatechange=function()
+{if(xhr.readyState==4&&xhr.status==200){
+   JSON.parse(xhr.responseText)
+}
+
+}}
+
+</script>
+</html>

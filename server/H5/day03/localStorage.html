@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src='./localStorage的封装.js'></script>
+</head>
+<body>
+  <script>
+     // 使用 localStorage  的API 
+     //1. 设置值  
+     localStorage.setItem("test01","this is a test01");
+    // 2. 获取值 
+    var value01 =  localStorage.getItem('test01');
+    console.log(value01);
+    // 3. 删除值 
+    localStorage.removeItem('test01');
+    // 4. 全部删除 
+    localStorage.setItem("test02","this is a test02");
+    localStorage.setItem("test03","this is a test03");
+    // localStorage.clear();
+
+    // 5. 获取指定的key  
+    var  value02 =  localStorage.key(2);
+    console.log(value02);
+
+    // 有一个 对象 xm  
+    var  xm = {
+      name : '小明',
+      age: 22,
+      work: '前端开发'
+    };
+    // 要将JS对象转化为 json 格式 在存储. 
+    var  data = JSON.stringify(xm);
+    localStorage.setItem("xm",data);
+
+
+  </script>
+
+</body>
+</html>

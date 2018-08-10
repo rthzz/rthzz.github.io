@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作业</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		<ul>
+			<li>
+				<input type="text" ng-model="msg" ng-change="fn();">
+			</li>
+			<li>
+				{{msg|uppercase}}
+			</li>
+			<li>
+				{{newMsg}}
+			</li>
+			<li>
+				{{time|date:"yyyy/M/d"}}
+			</li>
+			<li>
+				{{names|filter:"o"}}
+			</li>
+			<li>
+				{{str|uppercase|limitTo:-5}}
+			</li>
+			<li>
+				<input type="text" ng-model="f">
+			</li>
+			<li ng-repeat="name in names|filter:f">
+				{{name|uppercase}}
+			</li>
+		</ul>
+	</div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+
+	app.controller("ctrl",["$scope",function($scope){
+		$scope.fn = function(){
+			$scope.newMsg = $scope.msg.toLowerCase();
+		}
+		$scope.time = new Date();
+		$scope.names = ["jack","rose","mike","tom","zhangsan","lisi","wangwu","zhaoliu"];
+		$scope.str = "abcdefg";
+	}])
+</script>
+</html>

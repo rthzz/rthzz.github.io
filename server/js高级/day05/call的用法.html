@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+<script>
+/* call 的基本使用
+  1.call, apply都是函数自带的方法
+  2.在这里 call,apply 的作用是把 foo 中的 this 绑定thid给 obj.
+  3.使用call,apply方法,传入的第一参数是要绑定的对象,后面的参数才是函数真正的实参.  
+  4.apply方法和call一样, 只是传参不一样, apply 以数组的形式传入. 当参数不固定是用 apply. 
+*/
+    // 例子1 
+    var obj = {
+        sname: 'Xman'
+    };
+
+    function foo(work, age) {
+        console.log(this.sname);
+        console.log(work, age);
+    };
+    foo(); // this -> window  undefined 
+    // obj.foo();//  报错 没有 foo 方法 
+    foo.call(obj, '前端', 30); // 'Xman'
+    // apply() 
+    foo.apply(obj, ['UI设计', 20]);
+       
+    // 例子2 
+    // 用 call 可以把 类数组对象 转化为 数组 
+    function fun() {
+        console.log(arguments);
+        console.log(arguments instanceof Array); // false
+        console.log(arguments.__proto__);
+        // 类数组的转化 
+        var arg = Array.prototype.slice.call(arguments);
+        console.log(arg instanceof Array);
+        console.log(arg.__proto__);
+        arg.push(5);
+        console.log(arg);
+    };
+    fun(1, 2, 3, 4);
+</script>
+</body>
+
+</html>

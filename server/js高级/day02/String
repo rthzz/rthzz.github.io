@@ -1,0 +1,46 @@
+day02 String 字符串
+ 1. 字符串是由多个字符组成的只读(readOnly)数组, 一旦创建不能被修改.  
+   1.1 下标访问: var str = 'abcd';
+                 str[1] = 'b';
+
+   1.2 有length属性
+        str.length 访问字符串长度
+
+   1.3 只要不修改原数组的数组API字符串都可以使用
+       str.slice()  str.concat() 
+
+字符串的API 
+  1. 大小写转化
+     str.toLowerCase() 转小写 
+     str.toUpperCase() 转大写  
+  2. 获取指定的字符 
+    2.1 str.charAt(i)  等同于 str[i]  
+    2.2 str.charCodeAt(i) 
+        返回一个 unicode 号, unicode号是一个字符编码集. 将世界上所有的字符号都包含其中,给每一个字符都赋予一个独一无二的编码.
+
+    2.3 String.fromCharCode(unicode) 
+        将unicode号转化为字符
+
+    2.4 str.slice(starti,endi)
+        和数组的使用方式一样
+
+    2.5 str.substring(starti,endi);
+        截取字符串, 不支持负参数              
+
+    2.6 str.substr(starti, n); 
+        截取指定个数的字符  n表示个数
+
+ 3. str.split('分隔符'); 66
+    将字符串以 分隔符 来切割, 返回一个数组
+    该数组中保存着每段字符.
+    'www.baidu.com'  split('.') -> ['www','baidu','com'];   
+    
+ 4. 查找关键字 indexOf()  
+    var i = str.indexOf('关键字',fromi);
+    1. 只能查找固定的关键字
+    2. 返回值: 找到,返回关键字第一个字符所在的下标; 没找到, 返回 -1. 
+
+     
+
+             
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h2> 用户名检查 </h2>
+    <form >
+        <input type="text" placeholder="请输入用户名" id='user'>
+        <div id='tips'></div>
+    </form>
+    <script>
+      // 绑定 失去焦点事件  blur 
+      user.onblur = function(){
+          // 1. 获取用户名 
+          var userName =  this.value;
+          // 2. 创建 XHR  
+          var xhr = new XMLHttpRequest();
+          // 3. 建立连接   data拼接在url?的后面
+          xhr.open('get','01.php?user='+userName.trim());
+          // 4. 发送数据 
+          xhr.send(null);  
+          // 5. 注册监听 
+          xhr.onreadystatechange = function(){
+              if(xhr.readyState==4&&xhr.status==200){
+                  var  data = xhr.responseText;
+                  if(data === '1'){
+                       tips.innerHTML = '用户名已存在!';
+                  }else{
+                      tips.innerHTML = '用户名可使用!';
+                  }
+              }
+          }
+      }
+    </script>
+</body>
+</html>

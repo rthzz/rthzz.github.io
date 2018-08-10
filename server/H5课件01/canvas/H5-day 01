@@ -1,0 +1,115 @@
+H5 -canvas(画布) DAY 01
+1 . 最早由苹果公司推出,HTML5加入了
+主流浏览器开始支持canvas  由多组API组成
+HTML5中比较受欢迎的功能之一.<canvas>
+
+canvas 提供了图形处理功能 canvas元素本身不具备功能,他只是一张空的画布
+ 必须要用js结合canvas的API ,才能绘制
+
+ canvas能做啥
+   基础图形的绘制
+   文字的绘制
+   图形的变化和图片的处理
+   动画的实现
+   实现小游戏的制作 
+
+   浏览器的支持
+   ie8及以下不支持h5提示用户升级
+   大部分现代浏览器都是支持的
+
+   canvas的基础
+    1.使用canvas的步骤
+      1.1 先在html中定义canvas元素
+      1.2 在js中获取canvas元素
+      1.3 创建画布对象-
+                 canvas.getContext('2d')
+                 参数:2d  绘制2d图形
+
+    绘制坐标轴
+      横轴向右为正
+      纵轴向下为正
+      绘制直线,起点->终点->颜色->宽度
+      方法API
+         1.beginPath():开始定义路径
+         2closePath():关闭前面定义的路径
+         3.moveTo(float x,float y)  移动到当前的x y轴对应的点
+         4 lineTo(x,y)  把当前路径连接到x,y轴对应点
+    填充API
+       1 fill() 填充内容
+       2 stroke() 填充边框
+       3 fillStyle: 填充内容的颜色
+       4 strokeStyle: 填充边框的颜色
+       5 lineWidth :设置线条的粗细
+       6 lineJoin : 设置俩线相交时的边角类型
+                   bevel: 斜角
+                   miter:尖角  (默认)
+                   round:圆角 
+
+
+  绘制矩形
+  fillRect(x,y width,height)  绘制实心矩形
+  strokeRect(x,y width,height)  绘制矩形边框
+  clearRect(x,y width,height)  清除一个指定矩形
+
+  绘制文字
+   fillText(text,x,y) 绘制实心文字
+   strokeText(text,x,y) 绘制空心文字
+             属性 font 类似css的font
+                  textAligin :水平对齐方式
+                  textBaseline
+
+  绘制文字阴影
+  shadowColor:设置阴影颜色
+  shadowOffsetX/y;设置阴影的偏移x/y轴
+  shadowBlur: 设置阴影的模糊程度
+
+  绘制圆
+  1.arc(x,y,radius,startAngke,endAngle,driection)
+  圆心:x,y轴的坐标
+  半径:radius
+ 半径弧度 startAngke,endAngle)  Math.PI*2=360度
+ driection:
+ 
+
+ 在html中两个元素中 之间会有层叠关系
+  在canvas也有层叠关系,图形的覆盖
+    globalCompositeOperation
+      有12个值
+       source-over :新图形会覆盖在原有图形之上
+       destination-out:原有图形和新图形不层叠的地方保留,新图形不会显示
+
+
+
+8 绘制图片
+先创建一个img对象
+ var inmg=new img();
+ img src='图片路径';
+ drawImage(img,x,y,width,height);
+ img:当前对象
+
+ 注意:必须保证图片加载完成后才绘制图片
+     img.onload=function(){
+       ctx.drawImag
+     }
+
+
+操作像素
+  getImageData:返回一个对象 imageData
+         imageData 返回一个该画布指定矩形的像素数据
+          并存储在imageData 的data属性中
+
+imageData 对象中的每个像素
+
+putImagedata 
+
+
+      
+
+
+
+
+
+
+
+
+

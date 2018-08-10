@@ -1,0 +1,98 @@
+  web移动端  day01  
+
+1. 移动端的开发: 
+     1. H5 / webApp (vue)  
+     2. App ( react-native / weex ) 
+
+2. web移动端: 页面运行在移动端设备上( h5页面 ); 
+      1. 设备: 智能机 / 平板 
+      2. 操作系统: 安卓 , IOS,  windowPhone , 塞班 , 黑莓 .  
+      3. 浏览器: UC, QQ, 百度, 360, 搜狗, chrome, safari, 
+                     手机自带的浏览器. 
+      4. 浏览器的内核: 
+               webkit 内核的适用范围比较广, 苹果safari, 谷歌的chrome都是基于 webkit 开源内核开发的. 
+      5. 兼容性好.
+              移动端对 C3, H5的兼容性都很好, 移动端浏览器兼容性只考虑 webkit内核即可. 
+
+3. web移动端开发 有更高的适配性和性能要求
+       适配性: 手机的分辨率各式各样的, 尤其是安卓, 一套页面能够适配各种分辨率的手机. 
+       性能: 手机的性能相对PC来说,可能差一点. 网络状况: 比较复杂,
+       稳定性没有PC 端好. 
+
+4. 移动端的适配方案
+    1. viewport - 视口 , IOS引入的概念, 在手机上 视口是一个
+       虚拟的设备宽度. 通常情况下 虚拟的视口要比设备屏幕宽. 
+       将页面放入 到虚拟视口中去显示. 实现页面不经放大,直接显示,
+       在手机左右滑动窗口即可, 后来Android 引入该概念.
+       在 meta 标签中设置 viewport 
+        name='viewport'  设置 viewport 属性
+        content : 设置的是 viewport 的属性值 
+             width:  device-width 设备宽度
+             initial-scale : 默认缩放比例, 1
+             user-scalable: 设置是否支持缩放, 一般设置 no 
+             maximun-scale: 最大缩放值 1
+             minimun-scale: 最小缩放值 1 
+
+5. 移动端事件 -touch 
+    移动端有一组touch 事件 
+     touchstart  - 开始触摸
+     touchmove - 滑动
+     touchend - 触摸结束 
+     touchcancel - 被迫终止滑动                    
+
+移动端布局 - Flexbox 
+   1. flexbox layout - w3c 官方称之为 css弹性布局. 是css3中定义的一种新的布局模式. 
+   2.  FlexBox 控制在容器内的子元素的对其方式, 排列方式, 排序顺序.
+   3. 特点: 简单灵活,学习几个CSS属性,就可以实现各种页面布局.
+
+   4. flex 盒子模型:  由容器( cantainer ) 和容器里直接子元素(flex item )组成的, 在flex 中默认存在来条轴. 分别主坐标轴( main axis ) 和 纵坐标轴( cross axis ). 主坐标默认是横向, 默认从左向右.   纵坐标默认纵向, 默认从上向下, 当然你可以把主坐标轴设置成 纵向.     
+  
+Flex 使用 
+   主要学习 容器属性 和 子项属性
+ 1. 容器属性(flex container): 实现 flex布局需要指定一个容器
+      任何元素都可以被当成容器 (div), 这样容器内部就可以使用flex
+      来进行布局. 
+      1.display: flex/inline-flex; 
+         定义了容器的显示模式. 块级/行内 
+      
+      2. flex-direction: 决定子项在容器中的排列方式. 
+            row | row-reverse | column | column-reverse.
+          row: 表示 子项 横向从左向右排列的 ( 默认 )
+          row-reverse: 横向从右向左排列  
+          column:  表示 子项 纵向从上向下排列 
+          column-reverse: 纵向 从下向上排列   
+
+      3. flex-wrap : nowrap | wrap | wrap-reverse
+            是否让容器内的子项保持在一行内 
+            nowrap: 保持在一行或一列 (默认) 
+            wrap: 和nowrap相反 换行 
+            wrap-reverse: 表示换行还反向排列 
+
+      4. flex-flow : 该属性是 flex-direction 和 flex-wrap 两个属性的简写方法 . 
+           flex-flow: row nowrap; 
+           尽量使用简写方法,这样让你的代码更简洁.  优雅.  
+
+      5. justify-content: flex-start | flex-end | center |  space-between | space-around;  
+          flex-start: 子项在横轴开始方向对齐
+          flex-end: 子项在横线结尾方向对齐
+          center :  子项在横轴的居中对齐
+          space-between: 子项在横轴两端对齐
+          space-around: 子项在横轴等间距对齐           
+
+      6. align-items: 该属性定义了子项在纵轴方向的对其方式, 可以
+           把他看成 justify-content 的纵轴方向的定义.  
+        flex-start | flex-end | center | baseline | stretch;
+         baseline:  子项在纵轴方向的基准线对齐 
+         stretch: 默认值, 子项在纵轴方向填满整个容器
+                              ( 当子项高度固定时该属性不生效 )  
+
+
+flex 
+
+
+align-self:单个子项的对齐方式,允许单个子项有与其他子项不同的对齐方式
+  auto|flex-start|flex-end|center|baseline|stretch| 默认值auto
+
+
+             
+  

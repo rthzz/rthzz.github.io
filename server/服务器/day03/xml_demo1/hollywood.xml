@@ -1,0 +1,18 @@
+<?xml  version='1.0'  encoding='utf-8' ?>
+<hollywood>
+    <star>
+        <name>狼叔</name>
+        <age>52</age>
+        <work>金刚狼</work>
+    </star>  
+    <star>
+        <name>小罗伯特糖呢</name>
+        <age>48</age>
+        <work>钢铁侠</work>
+    </star>    
+    <star>
+        <name>埃文斯</name>
+        <age>42</age>
+        <work>美国队长</work>
+    </star>  
+</hollywood>

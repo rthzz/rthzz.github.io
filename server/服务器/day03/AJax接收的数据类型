@@ -1,0 +1,53 @@
+AJax接收的数据类型 day03 
+   AJax异步请求服务器端数据, 客户端接收的数据类型有三种
+     字符串  XML  JSON. 
+1. 接收字符串类型  
+     案例: 用户注册检查, 注册页面时用户名被占用,会提示用户名已存在.
+
+2. XML   
+   XML和HTML相似, 后缀.xml HTML元素是预定义的,XML元素
+   是自定义的, 没有默认的标签. 
+   1.1 xml的版本 
+        1.0  目前的版本 
+        1.1  几乎没人使用  
+   1.2 XML 的作用  
+        作为数据交换格式, 储存数据.  
+    1.3 XML 的语法 
+        version : 设置当前XML的版本 
+        encoding: 设置当前XML的文件的编码 
+        XML中标签都是双标签,没有单标签 
+        XML中必须有一个根标签, 所有子节点都放在根标签之下
+  1.4 XML的定义 
+         <?xml  version='1.0' encoding='utf-8' ?> 
+         <DocumentRoot>
+            ... 
+         </DocumentRoot>
+   1.5 XML 文档的解析获取方法  
+           可以直接使用核心DOM API 操作XML文档. 
+
+3. JSON  ***  
+     JavaScript Object Notation 是ECMASciprt的子集.
+     它是一种基于文本的数据交换格式, 储存数据. 后缀- .json 
+   3.1 特点: 
+        1.易于程序员阅读和编写
+        2. 易于计算机的解析和生成
+        3. JSON 是目前网络上使用最广泛的数据格式, 它已经代替了XML
+
+   3.2 json 的数据类型 
+             Number String null Boolean Array Object 
+   3.3 创建  json 文件 
+
+   3.4 JSON 的 API  
+       1. JS提供的API 
+          JSON.parse(): 将json字符串转化为JS对象
+          JSON.stringify(): 将JS对象转化为 json 字符串  
+  
+   3.5 在PHP中 json 的方法 
+       json_encode()  :  将php对象转化为json字符串
+       json_decode()  :  将 json 字符串 转化为 PHP对象
+
+4. 构建客户端 json  - 在 JS 中模拟json格式
+
+
+5. AJax  函数封装 
+     原生Ajax创建的5步,封装到一个函数中,直接调用即可. 

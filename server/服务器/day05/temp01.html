@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+   // 使用 定义的正则 来匹配对应的字符 
+   //1. 定义文本 
+  var str = '大家好,我是<% = name %>,我今年<% = age %>, 我的工作是 <%= work %>';
+  // 2. 定义数据 
+  var obj = {
+      name: '老王',
+      age:30,
+      work: 'JAVA开发工程师'
+  };
+  // 3. 利用正则把 str 中的模板替换成 数据 obj中的属
+  var  reg = /<%\s*=\s*([^%>]+\S)\s*%>/g; 
+   // 匹配 方法  str.match(reg)    reg.exec(str)
+   // 得到一个数组, 数组中是每一个匹配的结果  
+   var  matchstr =  str.match(reg);
+   console.log(matchstr);  
+   var data =  str.replace(matchstr[0],obj.name);
+   data =  data.replace(matchstr[1],obj.age);
+   data =  data.replace(matchstr[2],obj.work);
+   console.log(data);
+  
+    
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

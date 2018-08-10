@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+ <script>
+// 扩展内置对象 API   **
+   //  1. indexOf('关键字',fromi)  方法
+   var arr = [ 'a','b','c','d' ];
+   console.log(arr.indexOf('c',3));// 2 
+   // 把方法定义在数组的原型对象上 
+   Array.prototype.myIndexOf = function(key, fromi){
+        // 判断 fromi 没有 
+        if(!fromi){
+            fromi = 0; // 没有初始值就是 0.  
+        };
+        // 循环遍历 this, 循环变量 fromi  
+        for(  ; fromi<this.length;fromi++){
+            if(this[fromi] === key ){
+            // 当前元素 == key 
+                 return fromi;
+            }     
+         }
+       return -1;         
+   };
+   console.log(arr.myIndexOf('d'));// 3  
+
+
+   // 2. 扩展 call() 
+   var  xm = { 
+       work: '前端' 
+    };
+   function fun(sname,sage){
+       console.log(this.work);
+       console.log(sname,sage)
+   };
+   fun.call(xm,'小明',22);  // fun中的 this 指向 xm   '前端'
+   
+   /* 实现 call 方法的思路 
+       第一步:  就是把 this  绑定到 xm 上, 把 fun函数放     入 xm 对象中, 变成xm的内部方法,
+         这是 this -> xm , 先调用 fun,   在把 fun 删除 
+      第二步  
+        1. call 可以接受参数, 传入的参数不确定
+        2. 利用 arguments 来获取参数, 
+        3. 利用 eavl(  )  函数 , 字符串的解析 
+   */
+   Function.prototype.myCall  = function(obj){
+       // 给 xm  添加  fn 方法 
+       obj.fn = this; 
+       // 遍历 arguments  , 从下标1 开始 
+       for(var i=1,arr = []; i<arguments.length; i++){
+            arr.push('arguments['+ i +']');
+            // [ 'arguments[1]','arguments[2]' ]
+       }
+       // 执行 fn , this -> xm
+       eval(  ' obj.fn(' + arr + ') '  );// arr 自动toString
+       // 删除 fn 函数 
+       delete obj.fn;
+   };
+   fun.myCall(xm,'小明',28); // '前端'  
+
+  
+
+
+
+
+
+
+
+
+ </script>   
+</body>
+</html>

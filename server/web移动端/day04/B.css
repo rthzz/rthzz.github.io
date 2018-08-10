@@ -1,0 +1,5 @@
+/* 在此 引入 A.less文件  */
+/* A.less 中定义 @bgColor*/
+div {
+  background: red;
+}

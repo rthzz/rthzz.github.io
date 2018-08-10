@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// 执行上下文 EC 
+  function foo(i){
+ 	  if(i < 0){
+      return ;
+ 	  }
+ 	  console.log('begin: '+i);
+ 	  foo(i-1); 
+ 	  console.log('end: '+i);
+  };
+  foo(2);
+ 
+  //  使用 数组 来模拟函数的执行过程 
+  // 伪代码 
+  ECS = []; // 执行上下文栈
+
+  // 1. JS在执行代码前,先缓存全局代码,就是往栈中压入一个全局EC 
+  ECS  = [ globalEC ];  <-
+
+  // 2. 执行 foo() 
+  // 创建一个 foo EC  , 压入 ECS 中 
+  ECS = [ 
+     globalEC,
+     fooEC // 执行代码 
+   ];
+  // foo 又被调用一次, 在创建一个 foo EC2     
+  ECS = [
+    globalEC,                 //  打印  
+    fooEC,  // 执行代码 1  i = 2   2 
+    fooEC2, // 执行代码 2  i = 1   1
+    fooEC3, // 执行代码 3  i = 0   0
+    fooEC4  // 执行代码 4  i = -1
+  ]
+  // 当函数调用完之后, 函数就出栈 
+  // 谁先出栈 ? 
+  // fooEC4 出栈   无结果
+  // fooEC3 出栈     0
+  // fooEc2          1
+  // fooEC           2
+</script>
+</body>
+</html>

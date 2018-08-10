@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// JS单线程的同步执行过程 
+ var a = 10;
+ function change(){
+ 	 a = 11;
+ };
+ function print(){
+ 	 console.log(a);
+ };
+ change(); // 
+ print();  // 11
+
+ // JS异步执行过程 
+ function asy(){
+ 	  console.log('a');
+ 	  setTimeout(function(){
+ 	  	console.log('b');
+ 	  },100); // 100ms
+ }
+ function async(){
+ 	  console.log('c');
+ }
+ asy();   // 'a'  'c' 'b'
+ async(); //
+</script>
+</body>
+</html>

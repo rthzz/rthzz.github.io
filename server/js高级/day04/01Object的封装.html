@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// Object的封装 
+// 1. 对象直接量
+  var xm = {
+  	//属性名: 属性值,
+  	//每个属性和方法之间用逗号隔开
+  	sname: '小明',
+  	sage: 22,
+  	//方法名:  函数
+  	intrSelf: function(){
+  		 // this 表示 xm 对象 
+       console.log(this.sname);
+  	}
+  };
+  console.log(xm);
+  //调用 xm 的 intrSelf 方法
+  xm.intrSelf();
+
+  // 对象的访问 
+  console.log(xm.sage);// 22
+  console.log(xm['sname']);// '小明'
+  console.log(xm.work); // undefined
+  xm.work = '前端开发攻城狮';
+  console.log(xm);
+
+  // 对象的遍历  key:value 
+  // for key in obj
+  for(var key in xm){
+    console.log(key +" : "+ xm[key]);
+  };
+
+// 2. new 关键字 
+  var xh = new Object();
+  xh.sname = '小红';
+  xh.sage = 24;
+  xh.intrSelf = function(){
+  	console.log('大家好, 我是 '+this.sname);
+  };
+  // 克隆 xh 对象( 浅 )
+  function clone(obj){
+    // 1. 创建一个新的空对象 newObj
+    var newObj = new Object();
+    // 2. 遍历 obj
+    for(var key in obj){ 
+       // 3. 把 obj 的值 赋给 newObj
+      newObj[key] = obj[key];
+    }
+    // 4. 返回 newObj
+    return newObj;
+  };
+  var cloneXh = clone(xh);
+  // console.log(xh === cloneXh);// false  
+  console.log(cloneXh.intrSelf === xh.intrSelf);
+  // true  cloneXh的intrSelf 和xh的intrSelf 方法是同一个
+
+// 3. 工厂模式 
+  function createf(sname,sage){
+    var obj = new Object();
+    obj.sname = sname;
+    obj.sage = sage;
+    obj.fname = function(){
+    	 console.log('我是 '+this.sname);
+    }
+    return obj;
+  };
+  var p1 = createf('小明',22);
+  var p2 = createf('小红',20);
+  //p1.fname === p2.fname;  false
+
+
+
+
+
+
+
+
+
+</script>	
+</body>
+</html>

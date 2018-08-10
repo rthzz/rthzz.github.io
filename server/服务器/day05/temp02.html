@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src='./template-native.js'></script>
+</head>
+<body>
+  <!--1. 定义模板 使用模板语法 ul>li 结构  -->
+  <script id='temp01' type='text/html'>
+    <ul>
+      <li><%= name %></li>
+      <% for(var i=0;i<gf.length;i++){ %>
+        <li><%= gf[i] %></li>
+      <% } %>
+    </ul>
+  </script>
+  <script>
+    // 2. 我们定义的数据 
+    var obj = {
+      name: '小明',
+      gf: ['小红', '小花', '小雨']
+    };
+    // 3. 调用 template()  
+    var data = template('temp01', obj);
+    // 4. 将 data  添加到 body 上 
+    document.body.innerHTML = data;
+  </script>
+</body>
+
+</html>

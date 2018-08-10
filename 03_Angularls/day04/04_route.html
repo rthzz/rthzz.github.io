@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原生路由</title>
+</head>
+<body>
+	<ul>
+		<li><a href="#a">a链接</a></li>
+		<li><a href="#b">b链接</a></li>
+		<li><a href="#c">c链接</a></li>
+	</ul>
+	<div id="d">
+		
+	</div>
+</body>
+<script>
+	window.addEventListener("hashchange",function(){
+		//添加监听事件:锚点值的改变
+		// alert("aaa");
+		//获取锚点值
+		var hash = location.hash;
+		// alert("hash:"+hash);
+		//获取div
+		var div = document.getElementById("d");
+		/*switch(hash){
+			case "#a":div.innerHTML = "这是锚点a";break;
+			case "#b":div.innerHTML = "这是锚点b";break;
+			case "#c":div.innerHTML = "这是锚点c";break;
+		}*/
+		//发送Ajax请求,从服务器获取数据,将返回的数据显示在div中
+		var xhr = new XMLHttpRequest();//获取xhr
+
+		hash = hash.substr(1);
+		var url = "hash.php?hash="+hash;//请求地址及参数
+					// hash.php?hash=#a
+		xhr.open("get",url);
+
+		xhr.send();
+
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				var result = xhr.responseText;
+				div.innerHTML = result;
+			}
+		}
+
+
+	});
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id='btn' type='button'> 
+        获取 hollywood.xml的数据 
+    </button>
+</body>
+<script>
+    // 通过点击按钮获取XML数据,并把数据以 ul>li 的结构展示出来.
+    // 发送 Ajax 请求   get 
+    // 注意: 返回值 - xhr.responseXML; 
+    btn.onclick = function(){
+        // 1. 通过点击事件来触发Ajax请求
+        var xhr = new XMLHttpRequest();
+        xhr.open('get','02.php');
+        xhr.send(null);
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState==4&&xhr.status==200){
+                var data = xhr.responseXML;
+                // 2. 操作DOM, 处理业务逻辑 
+                var star = data.querySelectorAll('star');
+                // 遍历 satr  
+                for(var i=0;i<star.length;i++){
+                  // 先拼接 '<ul>'
+                  var str = '<ul>';  
+                 str+= '<li>'+star[i].querySelector('name').innerHTML+'</li>';
+                 str+= '<li>'+star[i].querySelector('age').innerHTML+'</li>';
+                 str+= '<li>'+star[i].querySelector('work').innerHTML+'</li>';
+                 str+='</ul>';
+                //  把 str 追加到 body  
+                document.body.innerHTML += str;
+                };
+            }
+        }
+    }
+</script>
+</html>

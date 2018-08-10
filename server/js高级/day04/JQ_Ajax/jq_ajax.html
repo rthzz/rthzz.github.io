@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src='./jquery.min.js'></script>
+</head>
+<body>
+    <img src="https://y.gtimg.cn/music/common/upload/T_Y_SOFTWARE/93507.png" >
+    <button id='btn' type='button'>$.ajax方法</button>
+</body>
+<script>
+    btn.onclick = function(){
+        /* 调用 $.ajax({
+                        url:  'xxx',
+                        data: {key:value},
+                        type: 'get/post',
+                        async: true,
+                        dataType: 'json',
+                        success: function(data){},
+                        error: function(err){  },
+                        beforeSend: function(){}          
+          })*/
+       $.ajax({
+           url: 'http://127.0.0.1/server/day04/JQ_Ajax/02.php',
+           data: {name: '小明',work: '前端开发'},
+           dataType: 'json',
+           type:'post',
+           success: function(data){
+                console.log(data);
+           },
+           error: function(err){
+            //    console.log(err)
+           }
+       })
+    }
+</script>
+</html>

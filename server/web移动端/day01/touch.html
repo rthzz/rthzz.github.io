@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      #box{ width:100%; height:100px; border:2px solid red ;}
+  </style>
+</head>
+<body>
+   <div id='box'></div>
+</body>
+<script>
+   // 给 box 绑定touch 事件 
+   // 1. touchstart 
+   box.addEventListener('touchstart',function(e){
+        e.preventDefault();
+        console.log(e);
+   });
+   // 2. touchmove
+   box.addEventListener('touchmove',function(e){
+       e.preventDefault();
+       console.log(e.targetTouches[0].pageX);
+    });
+    // 3. touchend
+    box.addEventListener('touchend',function(e){
+        e.preventDefault();
+        console.log(e.changedTouches[0].pageX);
+    });
+</script>
+</html>

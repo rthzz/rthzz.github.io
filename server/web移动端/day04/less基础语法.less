@@ -1,0 +1,98 @@
+/* less基础语法 */
+/* 1. 定义变量
+     以 @ 开头,变量名由字母,数字,_,-组成. 
+     存在作用域,局部作用域 优先 全局的.
+*/ 
+@baseColor: #ddd;
+div{
+  background: #999;
+  color:@baseColor;
+}
+// 2. 变量的计算  
+@gray : #666;
+@light-gary: #fefefe; 
+@baseWidth: 100px;
+p{
+  background: @gray + @light-gary;
+  color: @gray/2;
+};
+.box{
+  width: @baseWidth *2; 
+}
+
+// 3. 混合 mixin - 样式组合 
+// 将定义好的 .classA 引入到 .classB 中, 实现 
+// .classB 继承 .classA 的样式 
+
+.arc1{
+   width: 200px;
+   height:200px;
+   background: #666; 
+   .radius(20%);
+};
+.arc2{
+  width: 400px;
+  height:400px;
+  background: #afa;
+  .radius(30%);
+};
+.radius ( @r:50%  ){// 动态样式
+  border-radius: @r; 
+  -webkit-border-radius: @r; 
+}
+
+// 4. 嵌套规则 
+// 标签层级结构清晰, 并且减少你的代码量 
+// .box1 > h1, span > a, a:hover
+.box1{
+   h1{
+     font-size: 20px;
+     font-weight: 700px;
+   }
+   span{
+     display: inline-block;
+     a{
+        text-decoration: none;
+        color:red;
+        &:hover{ 
+          color: blue; 
+        }
+     }
+   }
+}
+
+// 5. less提供了颜色处理函数
+// lighten(@color, 10%);
+// darken(@color, 10%); 
+// fadein(@color, 10%);
+// fadeout(@color,10%);
+// fade(@color,10%);
+@alpha: #333; 
+.box2{
+   width:200px;
+   background:@alpha;
+   color: fade(@alpha,50%);
+};
+
+// @media 媒体查询 
+.box3{
+   @media screen and (max-width:400px){
+       background:red;
+   }
+   @media screen and (min-width:900px){
+    background:blue;
+   }
+  @media screen and (max-width:899px) and (min-width:401px){
+    background:green;
+   } 
+}
+
+// @import 指令-  引入less文件.
+// less文件中引入另一个less文件.
+// 比如 A.less里面定义一个 变量 @bgColor,
+// 在 B.less 文件中可以 引入 A.less 并使用这个变量
+
+// 写项目时,css样式要分多个模块,每个页面,每个模块写独立的less
+// 最终 用 @import 可以统一去调度你的整体样式. 
+
+// https://www.xfc123.com/

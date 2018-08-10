@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>路由的参数</title>
+</head>
+<body ng-app="app">
+	<div ng-view></div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script src="../libs/angular-route.js"></script>
+<script>
+	var app = angular.module("app",["ngRoute"]);
+
+	app.controller("ctrl",["$scope","$routeParams",function($scope,$routeParams){
+		//x :在配置时设置的参数的 key
+		var param = $routeParams.x;//获取属性(key)为x的参数的值
+		$scope.x = param;
+	}]);
+	app.controller("c1",["$scope","$routeParams",function($scope,$routeParams){
+		//获取请求中的2个参数
+		var a = $routeParams.a;
+		var b = $routeParams.b;
+		$scope.x = a+","+b;//将2个参数拼接,并绑定到$scope上
+	}]);
+	app.controller("c2",["$scope","$routeParams",function($scope,$routeParams){
+		$scope.x = $routeParams.id;
+	}])
+
+	app.config(["$routeProvider",function($routeProvider){
+		$routeProvider.when("/a",{
+			template:"路由a"
+		}).when("/b/:x",{
+			templateUrl:"showParams.html",
+			controller:"ctrl"
+		}).when("/c/:a/:b",{
+			templateUrl:"showParams.html",
+			controller:"c1"
+		}).when("/:id",{
+			templateUrl:"showParams.html",
+			controller:"c2"
+		})
+	}]);
+</script>
+</html>

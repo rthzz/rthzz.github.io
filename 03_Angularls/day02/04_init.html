@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>初始化</title>
+</head>
+<body ng-app="app" ng-init="name='zhangsan'">
+	{{name}},{{age}},{{sex}}
+	<div ng-controller="ctrl" ng-init="age=23">
+		{{name}},{{age}},{{sex}},{{a}}
+	</div>
+	<div ng-controller="c1" ng-init="sex='M'">
+		{{name}},,{{age}},{{sex}},{{a}}
+	</div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+
+	app.controller("ctrl",["$scope",function($scope){
+		$scope.a = 12;
+	}]);
+	app.controller("c1",["$scope",function($scope){
+		$scope.a = 23;
+	}]);
+</script>
+</html>

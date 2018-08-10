@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-app="app">
+	<ul ng-controller="ctrl">
+		<li ng-hide="true">{{num}}</li>
+		<li ng-bind="str" ng-if="false"></li>
+		<li>{{arr}}</li>
+		<li>{{obj}}</li>
+		<li ng-repeat="n in arr">{{n}}</li>
+		<li>{{obj.a}}</li>
+		<li ng-repeat="stu in stus">{{stu.name}}</li>
+	</ul>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+	app.controller("ctrl",["$scope",function($scope){
+		$scope.num = 1;
+		$scope.str = "字符串";
+		$scope.arr = [1,2,3,4];
+		$scope.obj = {a:1,b:2};
+		$scope.stus = [
+			{id:1,name:"zs"},
+			{id:2,name:"lisi"},
+			{id:3,name:"ww"},
+			{id:4,name:"zhaoliu"}
+		];
+	}]);	
+</script>
+</html>

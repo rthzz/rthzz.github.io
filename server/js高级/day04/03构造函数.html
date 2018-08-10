@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// 利用构造函数来创建对象
+// 1.定义构造函数
+  function Student(sname,sage){
+    this.sname = sname;
+    this.sage = sage;
+    // 把intrSelf方法定义在Student函数的
+    // 原型对象上
+    Student.prototype.intrSelf = function(){
+     	console.log(this.sname+this.sage);
+    }
+  };
+// 2. new 构造函数名 
+   var xm = new Student('小明',22);
+   var xh = new Student('小红',20);
+   // xm.intrSelf === xh.intrSelf;  false
+   // 是因为 每创建一个新对象, intrSelf方法都会被 new 一次.
+// 3. new 的四件事 ****
+
+// 4. 自己实例有,就用自己的
+  function Star(){
+  	Star.prototype.sname = '范冰冰';
+  	Star.prototype.sage = 36;
+  	Star.prototype.work = '演员';
+  };
+  var fbb = new Star();
+  fbb.sage = 18;
+  // 删除自有属性,不能删除共有属性 delete
+  delete fbb.sage; 
+
+  
+ 
+
+
+
+
+
+</script>
+</body>
+</html>

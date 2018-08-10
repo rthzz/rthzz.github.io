@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="c1" width="400" height="400">
+        <!-- 如果浏览器不支持会显示这个文本 -->
+        当前浏览器不支持
+    </canvas>
+    <canvas id="c2" width="400" height="400"></canvas>
+</body>
+<canvas id="c3" width="800" height="500"></canvas>
+<canvas id="c4" width="800" height="500"></canvas>
+
+<script>
+//创建画布对象
+    //1,获取canvas元素
+  var c1=document.getElementById('c1')
+  //调用getcontext()
+  var ctx=c1.getContext('2d')
+console.log(ctx)
+
+//绘制直线
+ctx.beginPath();
+ctx.moveTo(0,0);
+ctx.lineTo(100,100);
+ctx.closePath();
+//设置颜色 宽度 填充
+ctx.strokeStyle='red';
+ctx.lineWidth='10';
+//绘制颜色 宽度要在绘制方法之前
+ctx.stroke();
+
+
+
+
+var c2=document.getElementById('c2')
+var ctx2=c2.getContext('2d')
+
+ctx2.beginPath();
+ctx2.moveTo(10,10);
+ctx2.lineTo(100,100);
+ctx2.lineTo(300,10);
+ctx2.closePath();
+
+ctx2.strokeStyle='blue';
+ctx2.lineWidth='10';
+
+ctx2.lineJoin='bevel';
+ctx2.stroke();
+</script>
+
+<script>
+var c3=document.getElementById('c3');
+ var ctx3=c3.getContext('2d');
+ ctx3.beginPath();
+ ctx3.moveTo(200,10);
+ ctx3.lineTo(500,10);
+ ctx3.lineTo(50,300);
+ ctx3.lineTo(350,300);
+
+ ctx3.closePath();
+
+ ctx3.strokeStyle='green';
+ ctx3.lineWidth='10';
+ ctx3.lineJoin='round';
+ ctx3.stroke();
+
+
+// var c4=document.getElementById('c3');
+// var ctx4 =c4.getContext('2d');
+// ctx4.beginPath();
+// ctx4.moveTo(200,10);
+// ctx4.lineTo(500,10);
+// ctx4.lineTo(350,300);
+// ctx4.closePath();
+
+// ctx4.strokeStyle='green';
+// ctx4.lineWidth='10';
+// ctx4.lineJoin='round';
+// ctx4.stroke();
+
+
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+var str1='0bcd'	
+console.log(str1[1],str1.length);
+
+//字符串api
+//1hq指定位置的字符
+// str.charAt(n)
+console.log(str1.charAt(0));
+
+//str.charcodeat
+var str2='任'
+console.log(str2.charCodeAt(0))
+
+console.log(String.fromCharCode(90))
+
+//str.slice()
+var str3='hello word!'
+var c=str3.slice(-1)
+console.log(c,str3)
+//
+var str4='my gold!'
+
+console.log(str4.substring(0,1))
+
+//str.substr()
+console.log(str4.substr(3,4))
+
+//str.split (分割符)
+var str5='xuemasi@126.com'
+var m_arr=str5.split('@')
+console.log(m_arr)
+
+//案例-split()
+var msg='安其拉@法师@80%#亚瑟@肉盾90%#白起@战士50%'
+//英雄:安其拉 职位:法师生 命:80%
+var msg1=msg.split('#');
+for(key in msg1){
+	var msg2=msg1[key].split('@');}
+
+console.log('英雄'+msg2[0]+':'+'职位'+msg2[1]+'生命'+msg2[2]);
+
+//例子hello->olleh
+var h='hello'
+var hp=h.split('').reverse().join('')
+console.log(hp)
+
+
+</script>
+	
+</body>
+</html>

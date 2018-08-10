@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义服务-factory</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		{{a}},{{b}},{{c}},{{pi}}
+	</div>
+	<div ng-controller="c1">
+		{{pi}}
+	</div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+	app.controller("ctrl",["$scope","self","PI",function($scope,self,PI){
+		$scope.a = self.initcase("abc");
+		$scope.b = self.b();
+		$scope.c = self.c();
+		$scope.pi = PI;
+	}]);
+
+	//自定义服务-factory
+	//调用factory方法,第一个参数表示服务名,字符串
+	//第二个参数是数组,表示依赖的模块,最后一个元素是功能
+	//案例:首字母大写
+	app.factory("self",function(){
+		//先定义function
+		function initcase(str){
+			//获取第一个字符转大写,拼接上后续字符
+			return str[0].toUpperCase()+str.slice(1);
+		}
+		//再定义一个function
+		function str(){
+			return "第二个function";
+		}
+		function msg(){
+			return "第三个function";
+		}
+		//将前面所有定义好的function打包返回
+		//如果只返回一个function,就相当于
+		//return a = function(){return "...";}
+		//但是该方式只能返回一个function
+		return {
+			initcase:initcase,
+			b:str,
+			c:msg
+		}
+	});
+
+	//自定义服务-value
+	app.value("PI",3.1415926);
+
+	app.controller("c1",function($scope,PI){
+		$scope.pi = PI;
+	})
+</script>
+</html>

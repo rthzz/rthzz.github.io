@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn" type="button">
+        获取hoolywood.xml的数据
+    </button>
+    <script>
+    //通过点击按钮xml数据,并把数据以ui>li的结构展示
+    //发送ajax请求
+   btn.oonclick = function () {
+          //通过点击事件
+            var xhr =new XMLHttpRequest()
+            xhr.open('get', '02.php');
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                   var date=xhr.responseXML
+                 //操作 dom 处理业务逻辑
+                 var star=date.querySelectorAll('all');
+                
+                    
+                 //遍历
+                 for(i=0;i<star.length;i++){
+                     //先拼接'<ul>'
+                     var str='<ul>'
+                     str+='<li>'+star[i].querySelector('name').innerHTML+'</li>'
+                     str+='<li>'+star[i].querySelector('age').innerHTML+'</li>'
+                     str+='<li>'+star[i].querySelector('work').innerHTML+'</li>'
+                      str+='<ul>'
+                        document.body.innerHTML+=str
+                 };
+
+                      
+
+
+
+                   
+                }
+
+            }
+        }
+    
+    </script>
+</body>
+</html>

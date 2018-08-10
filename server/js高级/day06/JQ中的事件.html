@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src='./jquery.min.js'></script>
+</head>
+<body>
+    <button id='btn1'>JQ事件test -1 </button>
+    <button id='btn2'>JQ事件test -2 </button>
+    <button id='btn3'>JQ事件test -3 </button>
+    <script>
+        // 使用 jQuery 中的事件  
+        // 1. bind('事件名', 事件处理函数) 
+        $('#btn1').unbind(); 
+        $('#btn1').bind('click',function(){
+            alert( $(this).html() );
+        });
+        // 2. 直接使用 事件名 
+        // $('button').click(function(){
+        //      alert(this.id);
+        // });
+        
+        // 3. on()  
+        $('body').off();
+        $('body').on('click','button',function(){
+              alert(this.id);
+        });
+
+        // 在body下追加一个 button 按钮 
+        var btn4 = $('<button id="btn4">JQ事件test -4</button>');
+        btn4.appendTo($('body'));
+
+        
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+web 存储(客户端存储)  day03 
+  1. 什么是客户端存储? 
+    使用浏览器提供的API实现将数据存储到用户的电脑上, 客户端
+    存储赋予了浏览器的记忆功能. 
+  2. 会话控制. 什么是会话控制?
+     HTTP 协议特点: 无连接(每次只处理一个请求,响应完成直接断开),
+     无状态( 每次请求, 服务器是不会记录该次请求是谁发送的).  
+     会话控制: 就是在网站中根据一个会话来跟踪我们的用户, 从而
+                    呈现用户需要的内容.   
+  3. Cookie  网景公司发明 (1993)
+    1. 在HTTP协议中，采用了一种机制来记录客户端和服务器端
+    　交互的信息，这种机制被称为 cookie .  有了cookie服务器就
+       可以通过用户信息来判断用户是谁. 
+    2. cookie 一般是服务器端生成, 在客户端维护和存储. 
+        cookie 分为两种: 
+          1. 非持久cookie : 保存在内存中, 有浏览器来维护,浏览器关闭就消失.
+          2. 持久cookie : 保存在硬盘中, 长期有效. 用户可以设置cookie的有效时间. 
+
+     3. cookie  的使用场景: 
+         永久登录
+         添加购物车
+    4. Cookie 的使用  
+        通过 document.cookie 来读写 cookie . 
+    5. Cookie 的属性 
+       name: cookie的名字, 一个域名下的cookie名字不能相同
+                  否则会被覆盖.
+       value: cookie的name对应的值, cookie是以键值对出现的
+       expires/Max-age: expires属性决定cookie的有效时间,如果
+                   不设置有效时间, 就是非持久cookie.
+                   Max-age: 以秒为单位的有效时间, 逐渐取代了expires 属性. 
+       path: 这个属性匹配的是文件路径, 默认是  '/'  
+
+       domain: 域名, 设置cookie所在的域, 如果没有设置, 就会自动
+                     绑定到执行语句的当前域. 
+       secure:  安全性, HTTP协议本身是不安全的, HTTPS是安全的,
+                    值为true,必须是HTTPS协议下才能发送cookie, 默认值 false. 
+       HttpOnly : 设置值 为 true, 不能通过JS来读写cookie. 防止跨域脚本的 XSS 攻击.                                         
+    6. php中 cookie 的操作  
+          php提供了 setCookie($name,$val,$expirs,$path,$domain, $secure, $HttpOnly); 
+    7. cookie 的缺点
+          cookie中尽量不要存敏感数据, Cookie不安全.
+          每个域名下 cookie 个数是有限制的.
+          cookie保存的数据大小有限制的,   key=value; 4kb. 
+          设置 cookie之后, 每次请求都会附在 HTTP的请求头上.
+  4. HTML5 中新增了本地存储的API.(webStorage)
+       localStorage 和 SessionStorage  
+     4.1  localStorage 的特点
+         保存的数据长期存在, 下一次访问该网站时, 网页可以直接
+         读取以前保存在硬盘的数据. 
+         数据大小 5M. 
+         仅在客户端使用, 不参与服务器端的通信.  
+         接口封装的较好. 
+     4.2 localStorage 的 API 
+          设置值: localStorage.setItem(key, value);
+          读取值: localStorage.getItem(key); 
+          删除值: localStorage.removeItem(key);
+          全部删除: localStorage.clear(); 
+          获取指定的key : localStorage.key(index);        
+  5. SessionStorage 
+        用于保存在浏览器的一次会话,当会话结束,数据被清空. 
+        SessionStorage和LocalStorage方法完全一样. 
+  
+  6. IndexDB 客户端数据库 ( 了解 )
+    6.1 webStorage 使用简单字符串键值对在本地存储,方便灵活
+         ,但是对于大量的结构化数据存储就力不从心了. 
+         IndexDB 的出现就是为了解决这个问题. 
+   6.2  在 IndexDB 中大部分操作并不是 方法的调用. 
+          是请求/响应 的模式. 
+                
+   6.3 IndexDB  的优缺点 
+         优点:  可以实现离线访问, 数据存储量足够大
+         缺点:  兼容有问题, IE11 以上 
+                  API比较复杂              

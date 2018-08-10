@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+   // 数组排序 arr.sort() 
+   var arr = [8,4,2,10,5,8,3,7];
+   arr.sort(function(a,b){return b-a});
+   console.log(arr);
+
+   // 冒泡排序  排序算法 * 手写
+   function mySort(arr){
+   	// 第二层循环 for 
+   	for(var r=1;r<arr.length;r++){
+	    // 1. 遍历arr数组  第一层循环
+	    for(var i=0;i<arr.length-r;i++){
+	      // 2. 如果当前元素 > 下一个元素
+	      if(arr[i] > arr[i+1] ){
+	        // 交换两个元素的位置 
+	        // 3. 声明变量 temp ,保存当前元素
+	        var temp  = arr[i]; 
+	        // 4. 将下一个元素 赋值给 当前元素
+	        arr[i] = arr[i+1]; 
+	        // 5. 将 temp 赋值给 下一个元素
+	        arr[i+1] = temp;
+	      }     
+	    }
+    }
+   };
+   mySort(arr);
+   console.log(arr); 
+
+	</script>
+</body>
+</html>

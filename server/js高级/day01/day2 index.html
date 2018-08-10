@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body><script>
+//str.indexOf
+var str1='www.baidu.com'
+console.log(str1.indexOf('baidu'))  //4
+
+console.log(str1.indexOf('baidu',5))
+
+//例子
+var msg='no can no bibi,you can you bibi,who bibi '
+//查找关键字'bibi'
+function fun(str,temp){
+for(var i=0;i<str.length;i++){
+	var index=str.indexOf(temp,i);{
+		if(index!=-1){
+			i=index+temp.length-1;
+			console.log('在'+index+'找到')
+		}
+	}
+}
+
+}
+ fun(msg,'bibi')  	
+
+ //例子2利用indexOf去重复数
+ var str2='1013089'
+ //字符串去重
+ function rem(str){
+ 	//1.循环遍历str,并声明空数组arr
+ 	//2.如果去数组arr中查找str[i]没找到
+ 	//3.就把当前的str[i]压入arr中
+ 	//返回arr
+ 	for(var i=0,arr=[];i<str.length;i++){
+ 		// console.log(str[i])
+ 		
+ 		if(arr.indexOf(str[i])==-1){
+ 			arr.push(str[i])
+ 		}
+ 	} 
+return arr.join('')
+ }
+console.log(rem(str2))  
+
+//例子3原生字符去重 不使用indexof
+
+
+
+
+</script>	
+</body>
+</html>

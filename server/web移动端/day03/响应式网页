@@ -1,0 +1,42 @@
+     响应式网页 day03 
+1. 一个页面在不同的分辨率的设备上都能有很好的显示体验.  
+2. 如何编写响应式页面
+    2.1 设置 viewport 属性  
+    2.2 避免使用绝对单位 px, 用相对单位代替, %, auto, em, rem.
+    2.3 使用流式定位 : float . 
+    2.4 图片大小自适应: img{ max-width: 100%; } 
+    2.5 根据浏览器屏幕的特征, 有选择的执行CSS样式. 
+           CSS3 -   媒体查询(Media Query) 
+
+3. CSS3 - 媒体查询 
+     Media:  浏览网页的设备, pc/pad/phone/tv/屏幕阅读器
+     Query:  查询设备的特性: 类型, 宽高, 分辨率,...  
+     用法: 
+         @media screen and (max-width:980px) {
+               // css样式  
+          }
+          @media screen and (min-width:756px){
+              // css样式 
+          }
+4.  Bootstrap - 响应式网页的框架( css框架 )  Twitter            4.1 制作 boot 的基本模板
+     4.2 boot主要涉及内容 
+             HTML :  为H5已有的标签扩展新属性 data-*
+             CSS    :  CSS Reset  + 几千个 class  
+             JS       :  基于Jquery 提供了十几个插件. 
+
+  全局样式 - 栅格系统
+    栅格系统布局的特点: 
+      1. 所有的行必须放在容器中, 容器有种样式 
+          container / container-fluid (100%); auto
+                                                container
+      屏幕 > 1200px (超大PC- lg)     1170px
+              > 992px (PC - md)          970px
+              > 768px (平板 - sm)        750px
+              <768px (手机 - xs)           auto 
+      2. 容器内分为多行( row ), 一行有12列 col 
+      3. 网页内容只能放入col中,不能直接放入row. 
+      4. col中可以嵌套 row 
+      5. col 分为四类: col-lg/col-md/col-sm/col-xs  
+      6. col-md- 1~12 之间  
+      7. 可以隐藏col hidden-lg/hidden-md/hidden-sm/xs 
+      6. 偏移列  col-xs-offset-(1~12) 当前偏移的列数 

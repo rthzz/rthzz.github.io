@@ -1,0 +1,60 @@
+ajax异步请求服务器端数据,客户端接收的数据类型有三种
+字符串 xml json 
+ 1.接收字符串类型
+   案例:用户注册 检查 注册页面时用户名被占用,会提示用户名已存在
+
+2.xml
+xml和html相似 后缀.xml
+html元素是预定义
+xml元素是自定义,没有默认的标签
+
+ 1.1xml 版本
+  1.0目前的版本
+  1.1几乎没人使用
+ 1.2 作用
+  作为数据交换格式,存储数据.
+
+1.3 xml语法
+ version:设置当前xml的版本
+ encoding:设置当前xml的文件的编码
+ xml中标签都是双标签,没有单标签
+ 必须有一个根标签,所有子节点放在根标签之下
+
+ xnl的定义
+ <?xml  version:'1.0' encoding ='utf-8'?>
+
+ 1.5xml文档的解析获取方法
+ 可以直接使用核心dom API操作xml文档
+
+ 3 json***
+ javascript object notation 是ECMAScript的子集
+ 它是一种基于文本的数据交换格式.存储数据,后缀 .json
+ 特点:
+ 易于程序员阅读和编写
+ 易于计算机的解析和生成
+ json是目前网络上使用最广泛的格式,已经代替了xml
+
+ jaon的数据类型
+  number string null boolean array object
+
+
+  创建jaon文件
+  js的API
+    json.parse():将json字符串转换为js对象
+    json.stringify(:)将js对象转换为json字符串
+
+在PHP中json的方法
+json_encode():将PHP对象转换为json字符串
+json_decode():将json字符串转换为PHP对象
+
+构建客户端json 在js中模拟json格式
+
+ajax函数封装
+  原生ajax的5步封装到一个函数中,直接调用
+
+  json的优缺点
+
+
+  ors跨域资源共享
+    
+

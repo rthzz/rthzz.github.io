@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       localStorage.setItem('test01','this is a test01') ;
+       localStorage.setItem('test02','this is a test02') ;
+       localStorage.getItem('test01');
+       console.log(value01);
+       localStorage.removeItem('test01');
+    //    localStorage.clear();
+         var value02=localStorage.key(0);
+         console.log(value02)
+
+var xm={
+    name:'小明',
+    age:22,
+    work:'前端'
+};
+//将js对象转换为json格式 再存储
+var data=JSON.stringify(xm);
+localStorage.setItem('xm',data);
+
+
+
+        </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+一、AngularJs
+	1、什么是AngularJs？
+		AngularJs是一个前端框架,是以数据和逻辑为核心(驱动)的
+		Jquery需要先获取dom节点,然后对dom进行操作,Jquery是以DOM为核心(驱动)的
+		将多个封装的方法写在一个js文件中,该js就是一个库,多个库合在一起就是一个框架。
+		案例:
+			01_rumen.html
+
+	2、AngularJs的表达式	
+		{{表达式}}
+		算术运算，逻辑运算，关系运算，三目运算，字符串连接
+		02_biaodashi.html
+	3、设计模式:MVC模式
+		Model层:数据层/模型层,用于跟数据库进行操作
+		View层:视图层,用于展示数据,一般情况下,通过HTML页面来展示
+		Controller层:控制层用于连接数据层与视图层
+		03_mvc.html
+	4、AngularJs的模块化概念(module)
+		使用AngularJs构建一个应用是以模块的方式进行的
+		步骤:
+			1、引用AngularJs
+			2、在body或者html标签上添加ng-app属性，同时给定属性值"app"
+			3、定义模块
+				应用模块
+				其中参数"app"表示上一步的属性值,
+				[]表示该模块依赖的对象(模块)
+				var app = angular.module("app",[]);
+			4、定义控制器 []
+				通过app对象调用controller方法
+				ctrl表示该控制器的名称
+				数组表示该控制器依赖的对象以及控制器的作用
+				app.controller("ctrl",["$scope",function($scope){
+					...
+				}])
+			5、编写视图
+				挖坑填坑
+			04_module.html
+
+	5、指令
+		AngularJs对html属性的扩展
+		指令分为两类:内置指令,自定义指令
+		5.1 内置指令(05_inner.html)
+			AngularJs已经自己定义好的指令,都是以ng-开头的,是AngularJs的核心内容
+			ng-app :定义应用的名称,至少有一个元素指定了此属性
+			ng-controller:调用指定名称的控制器,定义控制器的范围
+			ng-model:定义绑定的数据的属性名
+			ng-bind:数据绑定,作用等同于{{表达式}}
+				使用表达式方式在页面加载的时候,有可能会出现闪烁现象
+				而使用ng-bind指令的方式,则可以避免闪烁
+				避免闪烁还有另外一种方式:
+			ng-show/ng-hide:判定某个节点的显示或隐藏
+			ng-if:判定某个节点是否存在
+			ng-repeat:遍历数组的每一个元素,将每一个元素以独立的节点显示出来
+
+			练习01:
+				在模型层中定义数据:一个数组,一个对象,一个字符串,一个数字
+				先使用表达式或者ng-bind将绑定的数据全部显示
+				将数字给隐藏(ng-hide)
+				删除字符串的节点
+				遍历数组
+			ng-checked:设置默认选中状态
+			ng-readonly:
+			ng-disabled:
+			ng-class:是对class类的封装
+			ng-switch:切换,筛选,选择
+			ng-src:对src的封装
+
+			练习02:
+				1、设置3个多选框，默认选中第二个
+				2、使用ng-src引用一张图片，图片路径通过模型层获取
+				3、使用ng-switch以及下拉菜单实现
+					选择html，显示html的内容
+					选择css，显示css的内容
+					选择js没显示js的内容
+				4、使用ng-class设置div的背景色
+
+			ng-include:用于引入外部页面
+				注意:
+					1、引用路径需要在""里面再添加一对''
+						ng-include="'路径'"
+					2、访问时需要通过服务器来访问
+
+
+
+

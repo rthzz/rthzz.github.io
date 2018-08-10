@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id='c1' width='400' height='400'></canvas>
+</body>
+<script>
+  // 开始绘制一个矩形 
+  var c1 = document.getElementById('c1');
+  var  ctx = c1.getContext('2d');
+  // 绘制矩形 
+  ctx.fillStyle = '#999';
+  ctx.fillRect(10,10,100,100);
+  // 绘制一个矩形边框 
+  ctx.strokeStyle = 'red';
+  ctx.lineWidth = 10;
+  ctx.strokeRect(120,10,100,100);
+  // 绘制一个实心矩形, 通过 清除 变成一个矩形边框 
+  ctx.fillStyle  = 'green';
+  ctx.fillRect(10,120,100,100); // 边框 10 
+  ctx.clearRect(20,130,80,80);
+  
+</script>
+</html>

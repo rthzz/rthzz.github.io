@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$http</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		<input type="button" ng-click="send1();" value="get无参请求">
+		<div>
+			返回的数据:{{data1}}
+		</div>
+		<input type="button" ng-click="send2();" value="get有参请求">
+		<div>
+			返回的数据:{{data2}}
+		</div>
+	</div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+	app.controller("ctrl",function($scope,$http){
+		//有参get请求
+		$scope.send2 = function(){
+			$http({
+				url:"data.php",
+				params:{name:"zhangsan"},
+				method:"get"
+			}).success(function(result){
+				$scope.data2 = result;
+			});
+		}
+		//无参get请求
+		$scope.send1 = function(){
+			//发送请求
+			$http({
+				url:"data.php",
+				method:"get"
+			}).success(function(result){
+				$scope.data1 = result;
+			});
+		}
+	});
+</script>
+</html>

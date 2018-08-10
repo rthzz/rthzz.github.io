@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id='c1' width='400' height='400'>
+  </canvas>
+  <script>
+     // 绘制 文字  
+     var ctx = c1.getContext('2d');
+     ctx.fillStyle  = '#00f';
+     ctx.font  = '30px microsoft yahei';
+    //  ctx.textBaseline = 'middle';
+     ctx.textAlign = 'center';
+     ctx.fillText('你好', 100,100);
+    //  ctx.textBaseline = 'middle';
+    //  ctx.font = '12px microsoft yahei';
+    //  ctx.fillText('Hello', 200, 100);
+   
+   // 空心文字 
+   ctx.shadowColor = '#999';
+   ctx.shadowOffsetX = '10';
+   ctx.shadowOffsetY = '10';
+   ctx.shadowBlur = 5;
+   ctx.strokeStyle = 'red';
+   ctx.strokeText('吃饭啦',200,250);
+    
+
+  </script>
+</body>
+</html>

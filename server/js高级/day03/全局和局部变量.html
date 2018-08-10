@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// 全局变量和局部变量 
+// 例子1 
+  var a1 = 20;
+  function fun1(){
+  	console.log(a1);
+  	a1++;
+  	console.log(a1);
+  }
+  fun1();// 20 21     
+  console.log(a1);// 21 
+
+// 例子2 
+  var a2 = 20;
+  function fun2(a2){
+  	console.log(a2);
+  	a2++;
+  	console.log(a2);
+  }
+  fun2();// undefined  NaN      
+  console.log(a2);//  20
+
+// 例子3 
+  var a3 = 20;
+  function fun3(){
+  	console.log(a3);
+  	a3++;
+  	console.log(a3);
+  }
+  fun3(a3);// 20 21    
+  console.log(a3);// 21  
+
+// 例子4 
+  var a4 = 20;
+  function fun4(a4){
+  	console.log(a4);
+  	a4++;
+  	console.log(a4);
+  }
+  fun4(20);// 20 21  
+  console.log(a4);// 20 
+
+</script>
+</body>
+</html>

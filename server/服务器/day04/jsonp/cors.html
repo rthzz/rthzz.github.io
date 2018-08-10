@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src='../JQ_Ajax/jquery.min.js'></script>
+</head>
+
+<body>
+  <button id='btn'>使用cors进行跨域</button>
+</body>
+<script>
+  $('#btn').click(function () {
+    console.log('qqq');
+    // cors 跨域就是发起普通的Ajax请求 
+    $.ajax({
+      url: 'http://127.0.0.1/server/day04/jsonp/02.php',
+      type:'post',
+      dataType: 'json',
+      success:function(data){
+          console.log(data);
+      }
+    })
+  });
+</script>
+
+</html>

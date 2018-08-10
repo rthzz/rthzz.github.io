@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id='c1' width='500' height='500'></canvas>
+  <script>
+   // 图形覆盖 
+   var ctx = c1.getContext('2d');
+   // 第一个矩形
+   ctx.fillStyle = 'red';
+   ctx.fillRect(10,10,100,100);
+   // 设置 图形的层叠关系  destination-out
+   ctx.globalCompositeOperation = 'destination-out';
+   // 第二个矩形
+   ctx.fillStyle = 'blue';
+   ctx.fillRect(60,60,100,100);
+
+
+
+  </script>
+</body>
+</html>

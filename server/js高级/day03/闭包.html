@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+ // 创建 闭包 (closure)	
+ function outer(){    // 外层函数 
+ 	  var n = 1;        // 受闭包保护的变量
+ 	  function inner(){ // 内层函数
+ 	  	 return n++;    // 操作外层函数的变量
+ 	  }                            
+ 	  return inner;    //  返回 内层函数
+ }
+ var getN = outer(); //  全局调用外层函数
+ // getN => function inner(){  }
+ console.log(getN());//  1 
+ var n  = null;
+ console.log(getN());//  2 
+ console.log(getN());//  3 
+
+ var getN2 = outer();
+ console.log(getN2()); // 1
+ console.log(getN2()); // 2
+ console.log(getN2()); // 3
+
+ 
+ // 闭包 例子1 
+ function fun1(){  // 60
+ 	  for(var i=0,arr=[];i<3;i++){ // i = 3
+      arr.push(function(){
+      	 console.log(i);
+      });
+ 	  }
+ 	  return arr;
+ }
+ var data = fun1();
+ /* arr  = [
+    function(){ console.log(i)},
+    function(){ console.log(i)},
+    function(){ console.log(i)}
+  ]
+  */
+ data[0](); // 3
+ data[1](); // 3 
+ data[2](); // 3 
+
+ // 例子2  闭包的化解  80
+  function fun2(){
+ 	  for(var i=0,arr=[];i<3;i++){ // i是fun2的
+      arr.push( (function(i){ // i 是自己的
+      	return function(){
+      	  console.log(i);	
+      	}
+      })(i));
+ 	  }
+ 	  return arr;
+  }
+  var data2 = fun2();
+  data2[0](); //  0
+  data2[1](); //  1
+  data2[2](); //  2
+
+
+
+</script>	
+</body>
+</html>

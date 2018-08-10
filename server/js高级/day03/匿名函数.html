@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	// 匿名函数 的自调
+	// 第一个括号函数表达式 (function(){})()
+	// 第二个括号就是调用  
+	(function (a){
+		return a;
+	})(5); // 5 
+  // 调用完立刻释放
+  (function(){
+  	var b = 100;
+  	console.log(b);
+  })(); // 100
+  console.log(b); // 报错
+  
+  // 1. 作为表示式的匿名函数, 赋值给一个变量
+  var fn  = function(){
+  	console.log('匿名函数1');
+  };
+  fn();
+
+  // 2. 作为返回值的匿名函数 
+  function fun(){
+  	return function(){
+      console.log('匿名函数2');
+  	}
+  };
+  fun()(); // '匿名函数2'
+
+  // 3. 作为参数的匿名函数 
+  sort(function(a,b){return a-b});
+
+
+</script>	
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // ES5 严格模式  
+    'use strict';
+    // 1. 变量声明必须 用 var 
+    var a = 10;
+
+    // 2. 增加 eval 作用域 eval() 
+    var str = 'var b = 20;console.log(b)'; 
+    eval(str); // eval函数可以把字符串转化为JS代码并运行. 
+    
+
+    // 禁止函数内部的 this 指向window
+   function fun(){
+      console.log(this); // undefined 
+      console.log(window);
+   };
+   fun();
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body> 
+   <canvas id='c1' width='400' height='400'></canvas>
+</body>
+<script>
+  // 操作像素 
+ var ctx = c1.getContext('2d');
+ ctx.fillStyle = 'red';
+ ctx.fillRect(10,10,100,100);
+ // 获取画布像素对象 
+ var imageData =  ctx.getImageData(10,10,100,100);
+//  console.log(imageData.data); 
+ for(var i=0;i<imageData.data.length;i+=4){
+    imageData.data[i] = 0;
+    imageData.data[i+2] = 255;
+ };
+ ctx.putImageData(imageData, 10,150);
+
+// 练习 : 将图片的像素反转放入画布中 
+// 注意:  浏览器不能使用 chrome , 使用 IE 或者 火狐
+
+
+
+
+
+
+
+
+</script>
+</html>

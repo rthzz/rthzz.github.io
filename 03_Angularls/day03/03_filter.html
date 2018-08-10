@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>filter服务</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		{{msg}}
+		<br>
+		{{a+b}}
+		<br>
+		{{time}}
+		<br>
+		{{orderArr}}
+	</div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+	//使用$filter服务实现字母转大写的功能
+	app.controller("ctrl",function($scope,$filter){
+		//通过$filter获取uppercase过滤器的功能/作用
+		var upper = $filter("uppercase");
+		// $scope.msg = upper("abcdefg");
+		// 将str1与str2合并显示,且,abc小写,efg大写
+		var str1 = "ABC";
+		var str2 = "efg";
+		var lower = $filter("lowercase");
+		$scope.a = lower(str1);
+		$scope.b = upper(str2);
+		//创建一个当前时间,显示在页面上
+		// $scope.time = new Date();
+		/*获取过滤器date的对象*/
+		var d = $filter("date");
+		//如果格式化数据需要参数,那么使用$filter获取的过滤器功能对象则可以传递第二个参数
+		//第二个参数就相当于:后面的参数
+		$scope.time = d(new Date(),"yyyy-MM-dd HH:mm:ss");
+		//orderBy过滤器
+		var order = $filter("orderBy");
+		var arr = [1,7,2,6,3,5,4];
+		// $scope.orderArr = order(arr);//默认排序
+		// $scope.orderArr = order(arr,"",true);//降序
+		$scope.orderArr = order(arr,"-");//降序
+	});
+</script>
+</html>

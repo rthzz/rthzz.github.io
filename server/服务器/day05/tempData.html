@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+   
+<script>
+  // 比如有一个对象 
+  var obj = {
+     name: '老王',
+     age:30,
+     work: 'JAVA'
+  };
+  // 希望把数据包装成 ul> li 结构 
+  <ul>
+     <li>姓名: 老王</li> obj.name
+     <li>年龄: 30</li>    obj.age
+     <li>工作: JAVA</li> obj.work 
+   </ul>
+ /*  使用模板的思想来包装. 
+      1. 模板的定义:  使用特定的格式表示数据 <%= 数据  %>
+      2. 使用正则去匹配 <%= 数据  %>, 替换对象中的数据
+  */   
+  <ul>
+     <li>姓名: <%= obj.name %> </li> 
+     <li>年龄: <%= obj.age %> </li>    
+     <li>工作: <%= obj.work %></li>  
+   </ul>
+</script>
+</body>
+
+</html>

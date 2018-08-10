@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义指令</title>
+</head>
+<body ng-app="app">
+	<div self-out></div>
+	<!-- 将指令当成一个属性来使用 -->
+	<h1 self-order></h1>
+	<!-- 将指令当成一个标签来使用 -->
+	<self-order></self-order>
+	<!-- 使用类的方式 -->
+	<div class="self-order"></div>
+	<!-- 使用注释的方式 -->
+	<!-- directive:self-order -->
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	//创建应用模块
+	var app = angular.module("app",[]);
+
+	//通过app模块调用directive方法
+	//自定义指令的命名需要遵守驼峰命名法
+	//而在使用的时候需要改写一下:self-order
+	//aBcDe==>a-bc-de
+	app.directive("selfOrder",function(){
+		return {
+			template:"<p>自定义指令1</p>",
+			restrict:"EACM",
+			replace:true
+		}
+	});
+	app.directive("selfOut",function(){
+		return {
+			templateUrl:"../day01/out.html"
+		}
+	})
+</script>
+</html>

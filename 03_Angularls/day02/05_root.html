@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>根作用域</title>
+</head>
+<body ng-app="app" ng-init="name='张三'">
+	body:{{name}},{{age}},{{sex}},{{msg}}
+	<div ng-controller="c1" ng-init="age=23">
+		c1:{{name}},{{age}},{{sex}}
+	</div>
+	<div ng-controller="c2" ng-init="msg='这是c2的初始化数据'">
+		c2:{{sex}},{{msg}}
+	</div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+
+	app.controller("c1",["$scope",function($scope){
+		$scope.sex = "F";
+	}]);
+	app.controller("c2",["$rootScope",function($rootScope){
+		$rootScope.sex = "M";
+	}]);
+</script>
+</html>

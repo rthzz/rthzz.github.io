@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<canvas id="c1" width="500" height="500"></canvas>
+<body>
+    <script>
+        var ctx=c1.getContext('2d');
+    var img=new Image();
+    imh.src='./timg.jpg';
+//保证图片创建完成,在进行绘制
+//法1
+// setTimeout(function){
+//     ctx.drawImage(img,10,10,100,100)
+// }
+
+   
+    img.onload=function(){
+        ctx.drawImage(img,10,10,100,100)
+    };
+    
+    
+    
+    
+    </script>
+</body>
+</html>

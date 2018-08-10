@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+ <script>
+   // 1. 创建 xhr 对象 
+   var xhr = new XMLHttpRequest(); 
+   // 2. 建立连接
+    // 请求方式 get  
+       xhr.open('get','xxx.php?'+data);// 数据附在url的后面 
+       // 3. 发送请求 
+       xhr.send();
+    // 请求方式 post  
+       xhr.open('post','xxx.php');  
+       // 在 send方法之前设置请求头 
+       xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');         
+       // 3. 发送请求 
+       xhr.send(data); 
+   // 4. 注册监听 
+   xhr.onreadystatechange = function(){
+       // 判断 xhr.readyState  xhr.status 
+       if(xhr.readyState==4&&xhr.status==200){
+            // 5. 拿到数据, 处理数据 
+            xhr.responseText;  
+       }
+   }  
+
+
+
+
+
+
+ </script>   
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+//2048游戏,判断游戏是否结束	
+//1.date2048数组中元素没有0,0表示游戏还有移动的空间
+//2.数组中相邻元素不相同
+//如果相同表示还有移动的空间
+var date2048=[
+[2,4,2,4],
+[4,2,4,2],
+[2,4,2,4],
+[4,2,4,2]
+]
+//1判断数组当前元素不为0
+function isfull(arr){
+for(var r=0;r<arr.length;r++){
+	for(var c=0;c<arr[r].length[r];c++){
+	   if(arr[r][c]===0){
+	   	  return false
+	   }
+	}
+ }
+ return true
+}
+
+// console.log(isfull(date2048))
+//判断相邻元素是否相等
+function isgamrover(arr){
+	//调用isfull方法
+	if(!isfull(arr)){return false}
+	for(var r=0;r<arr.length;r++){
+		for(var c=0;c<arr[r].length[r];c++){
+			if(c!=3){
+				if(arr[r][c]===arr[r][c+1]){
+					return false 
+				}
+			}else if(r!=3){
+				if(arr[r][c]===arr[r+1][c]){
+					return false
+				}
+			}
+		}
+	}
+	return true
+}
+console.log(isgamrover(date2048))
+
+</script>
+	
+</body>
+</html>

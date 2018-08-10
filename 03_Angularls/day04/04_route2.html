@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ngRoute</title>
+</head>
+<body ng-app="app">
+	<ul>
+		<li><a href="#/a">a链接</a></li>
+		<li><a href="#/b">b链接</a></li>
+		<li><a href="#/c">c链接</a></li>
+	</ul>
+	<div ng-view></div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script src="../libs/angular-route.js"></script>
+<script>
+	//创建应用模块,因为该应用用到了路由,所以需要依赖路由模块
+	//在数组中写路由模块的名称:ngRoute
+	var app = angular.module("app",["ngRoute"]);
+	app.controller("ctrl",["$scope",function($scope){
+		$scope.products = ["可乐","雪碧","红茶","绿茶","牛奶","啤酒"];
+	}]);
+	//配置路由
+	app.config(["$routeProvider",function($routeProvider){
+		$routeProvider.when("/",{
+			template:"<h1>这是首页</h1>"
+		}).when("/a",{
+			template:"<h1>这是a锚点</h1>"
+		}).when("/b",{
+			templateUrl:"./show.html"
+		}).when("/c",{
+			templateUrl:"./show2.html",
+			controller:"ctrl"
+		}).otherwise({
+			redirectTo:"/"
+		})
+	}]);
+</script>
+</html>

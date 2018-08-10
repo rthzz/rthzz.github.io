@@ -1,0 +1,87 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>取消与利用冒泡</title>
+  <meta charset="utf-8" />
+  <style>
+    #btn {
+      width: 320px;
+    }
+
+    #btn button {
+      width: 50px;
+      height: 50px;
+      font-size: 18px;
+      margin: 5px;
+    }
+
+    #text {
+      font-size: 20px;
+      width: 300px;
+      height: 60px;
+      resize: none;
+    }
+  </style>
+  <script src='../jquery.min.js'></script>
+</head>
+
+<body>
+  <textarea id="text" readonly></textarea>
+  <div id='btn'>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+    <button>C</button>
+    <button>+</button>
+    <button>-</button>
+    <button>=</button>
+  </div>
+</body>
+<script>
+  // 实现简单计算器 
+  $('#btn').bind('click', function (e) {
+    // 根据点击不同的按钮, 来执行不同的操作 
+    var txt = e.target.innerHTML;
+    // 获取 文本域元素 
+    var textarea = $('#text');
+    // 判断当前节点是 button 按钮
+    if (e.target.nodeName === 'BUTTON') {
+      switch (txt) {
+        case "C":
+          textarea.html('')
+          break;
+        case "=":
+          try {
+            if (textarea.html() === '+' || textarea.html() === '-') {
+              textarea.html('');
+              // 判断文本域中最后一位字符 是否是 数字		 
+            } else if (isNaN(textarea.html().slice(-1))) {
+              textarea.html(textarea.html().slice(0, -1));
+            }
+            textarea.html(eval(textarea.html()));
+          } catch (err) {
+            textarea.html(err);
+          }
+          break;
+        default:
+          textarea[0].innerHTML += txt;
+          // 判断文本域中  运算 字符只能出现一个
+          // 1. 判断字符串倒数第二位是否是 数字
+          // 2. 判断字符串最后一位是否是  数字
+          if(isNaN(textarea.html().slice(-2,-1))&&isNaN(textarea.html().slice(-1))  ){
+            // 截取前面的数字 和 截取最后一位字符 拼接在一起 
+             textarea[0].innerHTML = textarea.html().slice(0,-2) + textarea.html().slice(-1);
+          } 
+      }
+    }
+  });
+</script>
+
+</html>

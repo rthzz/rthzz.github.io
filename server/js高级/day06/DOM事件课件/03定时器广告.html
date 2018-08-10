@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      height: 5000px;
+    }
+
+    div {
+      position: fixed;
+      top: 50%;
+      margin-top: -220px;
+    }
+
+    .img1 {
+      left: 10px;
+      height: 236px;
+      width: 386px;
+    }
+
+    div span {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #999;
+      border-radius: 50%;
+      padding: 5px 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id='dd'>
+    <span id='close'>x</span>
+    <img class="img1" src="image/11.jpg" />
+  </div>
+</body>
+<script>
+  /* 定时器弹出广告  
+       1.  span绑定 click 事件, 删除广告 
+       2.  删除之后 5秒, 广告再次弹出
+    */
+    var  close = document.getElementById('close');
+     close.addEventListener('click',function(){
+          this.parentElement.style.display = 'none';
+          // 使用  setTimeout  定时器
+          setTimeout(fun, 2000);
+     });
+     function fun(){
+         dd.style.display = 'block';
+     }
+</script>
+
+</html>

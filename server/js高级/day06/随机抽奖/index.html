@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <title>学码思年会</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery.min.js"></script>
+    <!-- <script src='js/test.js'></script> -->
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="prize_con">
+            <!-- <p class='title'>学码思年会抽奖活动正式开始</p> -->
+            <p class="prize_grade">
+                <!-- <span>开始抽奖</span> -->
+                <img src="images/logo1.png" width="250" alt="" />
+            </p>
+            <div class="prize_list vetically">
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+            <p class="start">
+                <img src="images/btn.png" width=100%>
+            </p>
+            <div class="mask">
+                <ul class="prize_set">
+                    <li class="set_grade">
+                        <select id="set_grade">
+                            <option>选择奖项</option>
+                            <option>一等奖</option>
+                            <option>二等奖</option>
+                            <option>三等奖</option>
+                            <option>四等奖</option>
+                        </select>
+                    </li>
+                    <li class='prize_num'>
+                        <p>
+                            <span>请选择奖项</span>
+                        </p>
+                        <ul class='people'>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" value="0" id="prize_btn">
+</body>
+<script>
+/* 随机抽奖的需求 
+    1. 生成 1~200 之间的随机人数, 人数可扩展 
+    2. 点击开始按钮,开始 产生随机数, 再次点击暂定随机数,中奖
+        号码就要显示在奖池中.
+    3. 中奖号码不能重复, 中奖人数达到, 隐藏按钮
+    4. 请选择状态下, 开始点击按钮无效.   
+    5. 当选择奖项时, 生成对应的 li  一等奖: 2   二等奖: 4
+        三等奖: 5   四等奖: 10   
+        */
+var arr = [], // 总数组   
+    count = 200, // 总人数 
+    index, // 记录生成的随机数
+    num = 0, // 判断是否达到中奖人数
+    i = 1; // 判断当前点击操作是暂定还是开始 
+
+// 1. 遍历总人数, 把总人数放入总数组中
+for (var r = 1; r <= count; r++) {
+    arr.push(r);
+}
+// 2. 选择奖项, 利用 change 事件, 触发下拉菜单
+$('#set_grade').change(function () {
+    // 获取菜单内选项的内容  -  $(this).val()
+    // trim()  方法是去字符串首尾空格
+    switch ($(this).val().trim()) {
+        case '一等奖':
+            createLI(2, '一等奖');
+            break;
+        case '二等奖':
+            createLI(4, '二等奖')
+            break;
+        case '三等奖':
+            createLI(5, '三等奖')
+            break;
+        case '四等奖':
+            createLI(10, '四等奖')
+            break;
+        default:
+            // 把 li 清空  
+            $('.people').html("");
+            // 显示当前 前选择奖项 
+            $('.prize_num span').html('请选择奖项');
+    }
+});
+// 3. 生成 li 
+function createLI(n, str) {
+    num = 0;
+    // 1. 清楚之前生成的 li 
+    $('.people').html('');
+    // 2. 显示当前奖项
+    $('.prize_num span').html(str);
+    // 3. 根据传入的 n 生成对应的 li 
+    for (var i = 1; i <= n; i++) {
+        var li = $('<li></li>');
+        // 4. 每生成一个 li  就追加到 ul 下
+        $('.people').append(li);
+    };
+    // 判断当前按钮的状态  
+    if($('.start').css('display') === 'none'){
+        $('.start').css('display','block');
+    }
+}
+// 4. 生成随机数  randomNum  方法 
+function randomNum() {
+    // 1. 生成两个值之间的随机数 
+    var num = Math.floor(Math.random() * arr.length);
+    // 2. 返回随机数 
+    // arr_num 随机数下标对应的数组的值
+    // t_num 是生成的随机数 
+    return {
+        arr_num: arr[num],
+        t_num: num
+    }
+}
+// 5. 点击开始抽奖事件 
+$('.start').click(function () {
+    // 判断 arr.length === 1, 程序的极限情况 
+    if(arr.length === 1){
+        $('.start').css('display', 'none');
+            return;
+    }
+    // 定义一个定时器 timer 
+    var timer = null;
+    // 判断当前奖项选中状态 
+    if ($('#set_grade')[0].selectedIndex === 0) {
+        alert('请选择奖项哦');
+        return;
+    };
+    // 点击按钮时, 开始抽奖, 切换图片按钮-暂定 
+    $('.start img').attr('src', 'images/btn_stop.png');
+    // 调用  初始化抽奖方法 
+    init(function( randNum ){
+        // 把生成的随机数放入 对应的奖项中
+        // 1. 获取当前 li 的个数 
+        var li_list = $('.people li');
+        // 2. 遍历当前 li_list 
+        for(var r=0; r<li_list.length; r++){
+            if(num === r){
+                li_list[r].innerHTML =  randNum; 
+                break;
+            }
+        };
+        num++; 
+        // 当 num 的值 等于 li_list的个数时, 表示抽奖个数已满
+        if(num === li_list.length){
+                $('.start').css('display','none');   
+        }
+    });
+});
+// 6. 初始化抽奖方法 ** 核心代码 **
+function init(callback) { 
+        /* 1. 当点击开始按钮时, 要反复生成随机数, 再次点击
+                要暂定生成. 开始-> 定时器开启. 暂定->取消定时器
+        */
+        // 第一次点击, i = 1, 进入之后, i++
+        if (i % 2 != 0) { 
+            i++;
+            timer = setInterval(function () {
+                // 调用 randomNum, 赋值给 index 记录下来
+                index = randomNum();
+                // 得到 index.arr_num 随机数, 把他显示在奖池中 
+                $('.prize_list ul li').html(index.arr_num);
+            }, 50);
+        } else {
+           // 1. 清除定时器 timer 
+           clearInterval(timer);
+           timer  = null;
+           // 2. i重新赋值为1, 为了下一次定时器的开启 
+           i = 1; 
+           // 3. 把点击按钮图片切换回来
+           $('.start img').attr('src', 'images/btn.png');
+          /* 4. 把产生的随机数在对应的数组中删除,这样的话就
+           永远不会出现相同的 号码*/
+          arr.splice(index.t_num , 1);
+          // 5. 执行 callback, 把生成的随机数放入对应的 奖项 中. 
+          callback(index.arr_num); 
+        }
+    }
+
+</script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JQuery 实现瀑布流</title>
+<style>
+body {
+text-align: center;
+margin: 0;
+padding: 0;
+background-color: #F7F7F7;
+font-family: '微软雅黑';
+}
+.wrapper {
+padding: 50px;
+}
+img {
+display: block;
+width: 100%;
+height: 300px;
+}
+.items {
+position: relative;
+/* display: flex; */
+/* 环函 */
+/* flex-wrap: wrap; */
+}
+.item {
+width: 228px;
+position: absolute;
+}
+.tips {
+width: 110px;
+height: 40px;
+margin: 30px auto 0;
+text-align: center;
+line-height: 40px;
+background-color: #CCC;
+border-radius: 6px;
+font-size: 16px;
+cursor: pointer;
+}
+.tips.loading{ 
+/* background-color: transparent; */
+background-color: #797979;
+}
+</style> 
+</head>
+
+<body>
+  <h2>瀑布流展示页面</h2>
+  <div class="wrapper">
+    <!-- 瀑布流的容器, 瀑布流中的元素的宽度是固定的 -->
+    <div class="items">   
+    </div>
+    <p class="tips loading" onclick="getData()">加载更多...</p>
+  </div>
+</script>
+</body>
+</html>
+
+

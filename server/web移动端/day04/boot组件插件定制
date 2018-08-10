@@ -1,0 +1,61 @@
+ boot组价插件定制- day04
+
+组件 
+  1. 图标字体: glyphicons 是由boot免费提供给我们使用的,250+个.
+    字体图标不是图片,本质是字体. 
+  2. 字体图标必须要用于空元素( 不包含子元素和内容 ). 
+        <span class='glyphicon glyphicon-*'></span>    
+        @font-face {
+          font-family: 'Glyphicons Halflings';
+          src: url('../fonts/glyphicons-halflings-regular.eot');
+        }
+        .glyphicon {
+          position: relative;
+          top: 1px;
+          display: inline-block;
+          font-family: 'Glyphicons Halflings';
+          font-style: normal;
+          font-weight: normal;
+          line-height: 1;
+        }
+  3. 下拉菜单 
+        下拉菜单的结构:  
+              <div class='dropdown'> 父元素 相对定位
+                  <a type='button'>触发下拉按钮</a>
+                  <ul class='dropdown-menu'> 绝对定位
+                      ... 内容 
+                  </ul> 
+              </div> 
+
+  4. 响应式导航条 
+      41. 实现规则是: 在PC和平板上默认显示所有内容,但是在
+              手机上导航条默认显示logo,以及一个菜单折叠展开按钮
+              只有点击菜单按钮才可以显示或隐藏所有菜单内容.   
+      4.2 基础样式  .navbar  
+             导航条的背景色: 两种  白底 / 深色底  
+             导航条的定位:  两种   相对定位 / 固定定位  
+
+插件 
+  1. boot 基于jQuery 提供了十几个插件, 每个插件都有单独的文件
+      可以单独引用,也可以整体引用. 
+  2. 插件的使用:  
+          传统的JS调用方式: $('elem').dropdown();
+          使用 data-* 扩展属性方式调用: 
+             <button data-toggle='dropdown'></button>    
+
+Bootlint.js  工具 
+   1. 这是一个 boot 检测工具, 用于检测页面中常见的HTML错误,
+       class使用错误. 
+        (function () {
+          var s = document.createElement("script");
+          s.onload = function () {
+            bootlint.showLintReportForCurrentDocument([]);
+          };
+          s.src = "https://maxcdn.bootstrapcdn.com/bootlint/latest/bootlint.min.js";
+          document.body.appendChild(s);
+        })(); 
+
+boot的定制 - Less 
+    1.  less插件安装 - vscode  Esay Less 插件 
+    2. less是一门CSS的预处理语言.它扩展了CSS. 增加变量,混合(mixin), 函数等功能. 让CSS更易维护,扩展. 
+      less的运行环境  :  node / 浏览器.        

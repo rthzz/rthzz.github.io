@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+     <input type="text" id='text'>
+     <button id='btn' type='button'>
+          点击按钮
+    </button>
+</body>
+<script>
+    // 在输入框中输入内容, 点击按钮把内容发送到服务器端.
+    // 内容以 json 格式发送到后台   
+    btn.onclick = function(){
+        // 获取输入内容 
+        var text = document.getElementById('text').value;
+        // 把 text 值转为为 json 格式  
+        var user = '{"data": "'+ text +'" }';
+        // 1. 创建 xhr 对象 
+        var xhr = new XMLHttpRequest();
+        xhr.open('post','01.php');
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhr.send('user='+user);
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState==4&&xhr.status==200){
+                  // JSON.parse()
+                  console.log(JSON.parse(xhr.responseText)); 
+             }
+        }
+    }
+</script>
+</html>

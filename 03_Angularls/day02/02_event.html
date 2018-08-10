@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>常见事件</title>
+	<style>
+		#d{
+			width: 100px;
+			height: 100px;
+		}
+		.red{
+			background: red;
+		}
+		.blue{
+			background-color: blue;
+		}
+	</style>
+</head>
+<body ng-app="app">
+	<ul ng-controller="ctrl">
+		<li><input type="button" value="单击" ng-click="fn();"></li>
+		<li>
+			<!-- 定义一个div区域,预设2个颜色,鼠标移入时,颜色变红,鼠标移出,颜色变蓝 -->
+			<div id="d" ng-mouseenter="changeRed();" ng-mouseleave="changeBlue();" ng-class="{red:color==0,blue:color==1}"></div>
+		</li>
+		<li>
+			<input type="text" ng-model="msg" ng-change="ch();">
+		</li>
+		<li>
+			<input type="text" ng-model="a" ng-change="add();">
+			<input type="text" ng-model="b" ng-change="add();">
+			<div>{{a}}+{{b}}={{newA+newB}}</div>
+		</li>
+	</ul>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+
+	app.controller("ctrl",["$scope",function($scope){
+		$scope.add = function(){
+			$scope.newA = Number($scope.a);
+			$scope.newB = Number($scope.b);
+		}
+
+
+		$scope.ch = function(){
+			console.log(123);
+		}
+
+		$scope.fn = function(){
+			alert(111);
+		}
+		$scope.changeRed = function(){
+			//背景色变红色
+			// alert("red");
+			$scope.color = 0;
+		}
+		$scope.changeBlue = function(){
+			//背景色变蓝色
+			// alert("blue");
+			$scope.color = 1;
+		}
+	}]);
+</script>
+</html>

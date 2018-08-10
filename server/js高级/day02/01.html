@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	// 字符串的访问 
+	var str1 = 'Abcd';
+	console.log(str1[2], str1.length); // 'c'
+  
+// 字符串 API 
+// 1. 获取指定位置的字符 
+ // str.charAt(i);
+ console.log(str1.charAt(0)); // 'a'
+
+ // str.charCodeAt(i);
+ var str2 = '吴';
+ console.log(str2.charCodeAt(0)); // 'a'  97
+
+ // str.slice()  
+ var  str3 = 'hello World!';
+ var c = str3.slice(-1);
+ console.log(c, str3);
+
+ // str.substring() 
+ var str4 = 'my Gold!';
+ console.log(str4.substring(0,2)); // 'my'
+
+ // str.substr() 
+ console.log(str4.substr(3,4)); // 'Gold'
+
+ // str.split('分隔符');
+ var str5 = 'xuemasi@126.com';
+ var m_arr = str5.split('@');
+ console.log(m_arr);
+
+ // 案例 - split() 
+ var msg = '安其拉@法师@80%#亚瑟@肉盾@90%#白起@战士@50%';
+ /*
+    英雄: 安其拉 职位: 法师  生命: 80% 
+    ...
+    ...
+  */
+  var strArr = msg.split('#');
+  console.log(strArr);
+  for(var i=0;i<strArr.length;i++){
+   var  sArr =  strArr[i].split('@');
+     console.log(sArr)
+   console.log("英雄:" + sArr[0]+ ", 职位:"+sArr[1]+ ", 生命:" +sArr[2]);
+  };
+
+  // 例子  'hello' -> 'olleh'
+  var h = 'hello';  // split('')
+  var result =  h.split('').reverse().join('');
+  console.log(result);
+
+  
+
+</script>
+</body>
+</html>

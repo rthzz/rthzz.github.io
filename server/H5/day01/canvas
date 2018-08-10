@@ -1,0 +1,109 @@
+H5 - canvas(画布)  day01
+  1. canvas 最早是由苹果公司推出的, HTML5 中加入这个元素.
+      主流浏览器开始支持 canvas . canvas 由多组API组成. 
+  2. HTML5中比较受欢迎的功能之一 <canvas> 元素. 
+
+  3. canvas 提供了强大的图形处理功能. canvas元素本身不具备绘制
+      功能. 它只是一张空的画布.  必须使用 JS 结合canvas的API
+      才能进行绘制. 
+  4. canvas 能做什么? 
+        4.1 基础图形的绘制  
+        4.2 文字的绘制 
+        4.3 图形的变化 和 图片的处理
+        4.4 动画的实现 
+        4.5 实现小游戏的制作  
+
+  5. 浏览器的支持 
+         IE8及以下 不支持 HTML5, 提示用户升级浏览器.  
+         大部分现代浏览器都是支持的.  
+
+1. canvas的基础 
+    1. 使用canvas的步骤
+         1.1先在HTML页面中定义 canvas 元素
+         1.2在JS中获取 canvas 元素
+         1.3创建画布对象 - 
+                  canvas.getContext('2d'); 
+                  参数 : '2d'  绘制2d图形   
+
+2. 绘制坐标轴  
+   横轴向右是正, 纵轴向下是正.  绘制直线,起点->终点->颜色->宽度
+   方法API:
+      1. beginPath() : 开始定义路径 
+      2. closePath() :  关闭前面定义的路径
+      3. moveTo(float x, float y); 移动到当前的x,y轴对应的点. 
+      4. lineTo(x,y); 把当前路径连接到x, y轴对应的点.         
+   填充API: 
+       1. fill() ; 填充内容
+       2. stroke() ; 填充边框 
+       3. fillStyle :  填充内容的颜色 
+       4. strokeStyle  : 填充边框的颜色 
+       5. lineWidth :  设置线条的粗细 
+       6. lineJoin  :  设置两线相交时的边角类型  
+                bevel : 斜角
+                miter : 尖角 , 默认值
+                round:  圆角 
+                            
+3. 绘制矩形 
+  1. fillRect(x,y, width,height); 绘制一个实心矩形
+  2. strokeRect(x,y, width,height); 绘制一个矩形边框
+  3. clearRect(x,y, width, height); 清除一个指定的矩形
+   
+4. 绘制文字 
+   1. fillText(text,x,y); 绘制实心文字 
+   2. strokeText(text,x,y); 绘制空心字 
+          属性:   font  类似于 CSS 中的 font 属性
+                     textAlign: 水平对其方式
+                     textBaseline:  垂直对齐方式 
+
+5. 绘制文字阴影 
+    1. shadowColor: 设置阴影颜色 
+    2. shadowOffsetX/Y: 设置阴影的偏移 X Y轴
+    3. shadowBlur: 设置阴影的模糊程度                        
+
+6. 绘制圆 
+    1. arc(x,y,radius,startAngle,endAngle,driection); 
+         圆心:  x , y 轴的坐标 
+         半径:  radius
+         弧度:  startAngle,  endAngle. Math.PI * 2 = 360度;
+         driection: 绘制顺序.  true: 顺时针  false: 逆时针  
+                         默认是 false. 
+
+7. 图层覆盖  
+   1. 在 HTML  中 两个元素之间会有层叠关系. z-index . 
+       在canvas画布中也有层叠关系,图形的覆盖.
+       globalCompositeOperation 属性表示层叠关系 
+       它有12个值: 
+            source-over : 新图形会覆盖在原有图形之上(默认)
+            destination-out : 原有图形和新图形不重叠的地方
+                                       会被保留. 新图形不会显示出来的.  
+8. 绘制图片 
+    1. 先创建一个 image 对象 
+        var img = new Imgae();  
+         img.src = '图片路径'; 
+    2. drawImage(img, x,y,width,height); 
+        img:  当前图片对象
+    注意: 必须保证图片加载完成之后 才绘制图片. 
+             img.onload = function(){
+                 ctx.drawImage();
+             }
+9. 操作像素  
+    1. getImageData(x, y, width, height);  
+        该方法返回一个对象 ImageData.
+        ImageData对象返回 该画布指定矩形的 像素数据.
+        并储存在 ImageData的 data 属性中.           
+    2. ImageData 对象中的每个像素, 都存在四个方面的信息.
+        即 RGBA 值组成. 
+        R - red (0~255)       ImageData.data[0]
+        G - green (0~255)   ImageData.data[1]
+        B - blue (0~255)      ImageData.data[2]
+        A - alpha (0~255)    ImageData.data[3]
+             [ 0表示透明, 255表示不透明 ] 
+                
+    3. putImageData( imageData ,x,y); 
+          将图片的像素放回画布中
+
+
+
+
+
+          

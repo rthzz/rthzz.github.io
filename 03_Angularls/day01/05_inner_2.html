@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>内置指令2</title>
+	<style>
+		#d{
+			width: 100px;
+			height: 100px;
+		}
+		.blue{
+			background-color: blue;
+		}
+		.red{
+			background-color: red;
+		}
+		ul{
+			list-style: none;
+		}
+		.li{
+			float: left;
+		}
+	</style>
+</head>
+<body ng-app="app">
+	<div ng-include="'./out.html'"></div>
+	<ul ng-controller="ctrl">
+
+		<!-- ng-checked -->
+		<li>
+			<input type="checkbox" ng-checked="isChecked">男
+		</li>
+		<li>
+			<input type="text" ng-readonly="true" value="123">
+		</li>
+		<li>
+			<input type="text" ng-disabled="false">
+		</li>
+		<li>
+			<div id="d" ng-class="{blue:color==0,red:color==1}"></div>
+		</li>
+		<!-- ng-switch -->
+		<li>
+			<select ng-model="choose"><!--定义一个属性名-->
+				<option value="">请选择</option>
+				<option value="1">html</option>
+				<option value="2">css</option>
+				<option value="3">js</option>
+			</select>
+			<ul ng-switch="choose"><!--定义switch-->
+				<!-- 匹配对比  -->
+				<li ng-switch-when="1">html的内容</li>
+				<li ng-switch-when="2">css的内容</li>
+				<li ng-switch-when="3">js的内容</li>
+			</ul>
+		</li>
+		<li>
+			<img ng-src="{{path}}" height="48px">
+		</li>
+	</ul>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[])	;
+	app.controller("ctrl",["$scope",function($scope){
+		$scope.isChecked = true;
+		$scope.color = 0;
+		$scope.path = "01.jpeg";
+	}]);
+</script>
+</html>

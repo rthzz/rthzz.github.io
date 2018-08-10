@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='./mouseEvent.js'></script>
+	<style>
+		.point {
+				position: absolute;
+				top: 10px;
+				left: 450px;
+			}
+	</style>
+</head>
+<body>
+	<canvas id="c1" width="400" height="400" style="background:#fff"></canvas>
+	<div class="point">
+		<p>mousedown(鼠标点击时坐标)</p>
+		<p>X: <span class="pointX">0</span></p>
+		<p>Y: <span class="pointY">0</span></p>
+		<p>mousemove(鼠标移动时坐标)</p>
+		<p>X: <span class="pointX1">0</span></p>
+		<p>Y: <span class="pointY1">0</span></p>
+		<p>mouseup(鼠标释放时坐标)</p>
+		<p>X: <span class="pointX2">0</span></p>
+		<p>Y: <span class="pointY2">0</span></p>
+	</div>
+	<script>
+			// 在画布中 绘制圆点 跟随鼠标的移动 
+			// 并且 记录 鼠标按下, 鼠标移动, 鼠标抬起时的坐标
+			var ctx = c1.getContext('2d');
+			var spans  = document.querySelectorAll('.point span');
+			console.log(spans);
+			// 在 事件 mousemove 中绘制圆 
+			mouseEvent.mouse(c1, mousedown,mousemove,mouseup);
+			function mousedown(e){
+          spans[0].innerHTML = e.points.dx;
+          spans[1].innerHTML = e.points.dy;
+			};
+			function mousemove(e){
+					var x = e.points.dx, y=e.points.dy;
+					// 绘制 圆 
+					ctx.clearRect(0,0,400,400);
+					ctx.beginPath();
+					ctx.fillStyle = 'red';
+					ctx.arc(x, y , 10,0 , Math.PI*2);
+					ctx.closePath();
+					ctx.fill();
+          spans[2].innerHTML = e.points.dx;
+          spans[3].innerHTML = e.points.dy;
+
+			};
+			function mouseup(e){
+          spans[4].innerHTML = e.points.dx;           
+          spans[5].innerHTML = e.points.dy;           
+			}
+
+	</script>
+</body>
+</html>

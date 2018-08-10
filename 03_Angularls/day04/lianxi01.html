@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		table,tr,td{
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body ng-app="app">
+	<div ng-controller="ctrl">
+		<input type="button" value="发送" ng-click="f();">
+		<table>
+			<tr>
+				<td>编号</td>
+				<td>姓名</td>
+				<td>年龄</td>
+			</tr>
+			<tr ng-repeat="stu in stus">
+				<td>{{stu.id}}</td>
+				<td>{{stu.name}}</td>
+				<td>{{stu.age}}</td>
+			</tr>
+		</table>
+		<hr>
+		<input type="button" value="有参" ng-click="f1();">
+		<div>
+			{{data}}
+		</div>
+	</div>
+</body>
+<script src="../libs/angular.min.js"></script>
+<script>
+	var app = angular.module("app",[]);
+	app.controller("ctrl",["$scope","$http",function($scope,$http){
+		$scope.f1 = function(){
+			$http({
+				url:"lianxi01.php",
+				method:"post",
+				headers:{"Content-Type":"application/x-www-form-urlencoded"},
+				data:"username=zhangsan&password=123456"
+			}).success(function(result){
+				console.log(result);
+				$scope.data = result;
+			});
+		}
+		$scope.f = function(){
+			$http({
+				url:"lianxi01.php"
+			}).success(function(result){
+				console.log(result);
+				$scope.stus = result;
+			});
+		}
+	}])
+</script>
+</html>

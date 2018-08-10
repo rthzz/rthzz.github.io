@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// Error 类型
+ // 1. 语法错误
+ // var 1_abc = 'abc';
+ 
+ // 2. 引用错误
+ function add(){
+ 	console.log(a++);
+ }
+ // add();
+
+ // 3. 类型错误
+ var a = 10;
+ // a(); 
+
+ 
+ // 例子1  使用 try catch 去捕获错误
+ /*  isNaN() : 用于检查变量是否是Number类型 
+     返回值是 true / false 
+               NaN   Number
+      isNaN(10) = false
+      isNaN('a') = true            
+  */
+
+  function fun1(num){
+    if(isNaN(num)){ // true
+      // 抛出一个 Error 对象	
+      throw new Error('你的数学是体育老师教的吗');
+    }else{
+    	alert(num);
+    } 
+  };
+  function fun2(text){
+    try{
+      fun1(text); 
+    }catch(err){ 
+      alert('必须是数字');
+      // 打印出 错误信息 
+      console.log(err);
+    }
+  } 
+  fun2('hello');
+
+
+
+
+
+</script>	
+</body>
+</html>

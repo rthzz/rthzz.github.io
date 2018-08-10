@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+    // 创建数组 
+    // 1. 索引数组    
+    var arr01  = [1,2,3,4,5,'hello'];
+    console.log(arr01);
+    // 2. 使用 new 关键字 
+    var arr02 = new Array('a','b','c');
+    console.log(arr02);
+    // 3. 获取数组的值  arr[i]  获取不存在的下标,返回 undefined 
+    console.log(arr01[10]); // undefined
+    // 4. 设置数组的值   arr[i] = 值 
+    arr01[6] = 'yellow';
+    console.log(arr01);
+    // 5. 获取数组的长度 
+    arr01.length; // 
+    // 6. 获取数组的最后一个元素 
+    // arr01.length -1;
+    // 数组末尾追加新值
+    arr01[arr01.length] = 'blue';
+    console.log(arr01);
+
+ // 关联数组的创建 
+    // 1. key : value
+    var arr03  = new Array();// 新建一个空数组
+    arr03['name1']  = '范冰冰';
+    arr03['name2'] = '李冰冰';
+    console.log(arr03);
+
+// 数组的遍历 
+  // 索引数组的遍历  for 循环  arr01
+  for(var i=arr01.length-1;i>=0;i--){
+  	// 从后往前遍历
+  	console.log(arr01[i]); // 表示当前元素
+  }
+  
+  // 关联数组的遍历  for key in  arr03
+   for(var key in arr03){
+      console.log(key + " : " +arr03[key]);
+   }
+
+
+
+
+
+	</script>
+</body>
+</html>

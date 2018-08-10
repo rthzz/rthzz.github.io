@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id='c1' width='500' height='500'>
+  </canvas>
+</body>
+<script>
+    var ctx = c1.getContext('2d'); 
+   // 绘制图片 
+     // 1, 创建一个Image对象 
+     var img = new  Image();
+     img.src = './timg.jpg';
+     // 2. 绘制 
+     // 保证图片创建完成 , 在进行绘制 
+     img.onload = function(){
+        ctx.drawImage(img,10,10,100,110);
+     };
+</script>
+</html>

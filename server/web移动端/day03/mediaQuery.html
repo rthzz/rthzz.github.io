@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      font-family: "Microsoft yahei";
+      margin: 0;
+      padding: 0;
+    }
+
+    @media screen and (min-width:980px) {
+      p {
+        font-size: 36px;
+        border-bottom: 1px solid #ccc;
+      }
+      #container {
+        background-color: aqua;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+    }
+
+    @media screen and (max-width:979px) and (min-width:720px) {
+      p {
+        font-size: 26px;
+        border-bottom: 1px solid #ccc;
+      }
+      #container {
+        background-color: beige;
+        padding: 4px;
+        border: 1px solid #ddd;
+      }
+    }
+
+    @media screen and (max-width:719px) {
+      p {
+        font-size: 26px;
+        border-bottom: 1px solid #ccc;
+      }
+      #container {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <p>media-quey媒体查询</p>
+  <div id='container'>
+    <!-- 假文生成   lorem + tab -->
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut illum laboriosam, quisquam qui eos ea earum velit quasi, laudantium
+    beatae veritatis esse ducimus amet doloremque quae, quidem suscipit. Magni, alias! Lorem, ipsum dolor sit amet consectetur
+    adipisicing elit. Possimus incidunt eos doloremque enim provident exercitationem sequi architecto laboriosam consequuntur,
+    qui ipsam temporibus atque earum modi magnam recusandae reiciendis ea. Unde.
+  </div>
+</body>
+
+</html>
